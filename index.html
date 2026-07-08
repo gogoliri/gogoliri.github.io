@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Khoa Pham-Dinh</title>
+  <style>
+    :root { --accent: #4B6F44; } /* Green Satin */
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #ffffff;
+      color: #000000;
+      font-family: "Avenir", "Afacad", -apple-system, "Segoe UI", sans-serif;
+    }
+
+    .wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 24em;
+      text-align: center;
+      font-size: 1.2vw;
+    }
+
+    img.avatar {
+      width: 15em;
+      max-width: 90%;
+      border-radius: 50%;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+    }
+
+    h1 {
+      font-size: 3em;
+      font-weight: 500;
+      margin: 0.4em 0 0.1em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      font-weight: 400;
+      color: var(--accent);
+      margin: 0.1em 0;
+    }
+
+    p {
+      font-size: 1em;
+      line-height: 1.7;
+      margin-top: 1.4em;
+      text-align: justify;
+      text-align-last: center;
+      hyphens: auto;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    /* Responsive font sizing by aspect ratio (mirrors reference) */
+    @media (max-aspect-ratio: 1/1) {
+      .wrap { font-size: 1.8vh; }
+    }
+    @media (max-width: 600px) {
+      .wrap { font-size: 4.2vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <img class="avatar" src="avatar.jpg" alt="Khoa Pham-Dinh">
+    <h1>Khoa Pham-Dinh</h1>
+    <p>
+      Send me an <a href="mailto:khoa.a.phamdinh@gmail.com">email</a>.
+      See my bio on <a href="https://www.linkedin.com/in/khoaphamdinh" target="_blank" rel="noopener">LinkedIn</a>.
+      Explore my publications on <a href="https://scholar.google.com/citations?user=fDkQ3CwAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.
+      Check out my code on <a href="https://github.com/gogoliri" target="_blank" rel="noopener">GitHub</a>.
+    </p>
+  </div>
+</body>
+</html>
