@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<!--
+  ================= THE DOI SWITCH =================
+  The CV links this paper by its DOI. This page is the stable khoaphamdinh.com
+  landing page for it, linked from the homepage publication list. Today that URL
+  shows this page: abstract, BibTeX, and a link out to the published paper.
+
+  The real DOI is already filled in on the ONE line directly below. Uncommenting
+  it - by deleting the comment opener at the start of the line and the comment
+  closer at the end of the line - turns this stable URL into an instant redirect
+  to the publisher page on IEEE Xplore, in every browser, with no JavaScript
+  involved. Save, commit, push.
+
+  It is left commented on purpose: this page carries the standardization-adoption
+  note and the award note, which the publisher page does not, and it keeps the
+  abstract and BibTeX readable without a publisher paywall or cookie wall.
+  ==================================================
+-->
+<!-- <meta http-equiv="refresh" content="0; url=https://doi.org/10.1109/ISM66958.2025.00038"> -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evaluating the Emerging MPEG Video Coding for Machines in Semantic Segmentation — Khoa Pham-Dinh</title>
+<link rel="canonical" href="https://khoaphamdinh.com/papers/vcm-segmentation.html">
+
+<!-- Google Scholar indexing -->
+<meta name="citation_title" content="Evaluating the Emerging MPEG Video Coding for Machines in Semantic Segmentation">
+<meta name="citation_author" content="Pham-Dinh, Khoa">
+<meta name="citation_author" content="Pakdaman, Farhad">
+<meta name="citation_author" content="Zhang, Honglei">
+<meta name="citation_author" content="Rezazadegan Tavakoli, Hamed">
+<meta name="citation_author" content="Le, Nam">
+<meta name="citation_author" content="Ahonen, Jukka">
+<meta name="citation_author" content="Gabbouj, Moncef">
+<meta name="citation_conference_title" content="2025 IEEE International Symposium on Multimedia (ISM)">
+<meta name="citation_publisher" content="IEEE">
+<meta name="citation_publication_date" content="2025/12/08">
+<meta name="citation_firstpage" content="141">
+<meta name="citation_lastpage" content="148">
+<meta name="citation_doi" content="10.1109/ISM66958.2025.00038">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Evaluating the Emerging MPEG Video Coding for Machines in Semantic Segmentation">
+<meta property="og:description" content="An evaluation methodology for MPEG Video Coding for Machines on semantic segmentation with the PandaSet dataset, benchmarked against VVC and HEVC. IEEE ISM 2025.">
+<meta property="og:url" content="https://khoaphamdinh.com/papers/vcm-segmentation.html">
+
+<style>
+  :root {
+    --bg: #F5EFE1;          /* warm cream */
+    --ink: #1E2A1A;         /* soft near-black, green-tinted */
+    --accent: #4B6F44;      /* Green Satin */
+    --panel: #EDE5D2;       /* slightly deeper cream for blocks */
+    --rule: #D8CEB6;        /* hairline */
+    --muted: #4A5342;       /* secondary text */
+    --rule-strong: #8E8468; /* 3.24:1 on --bg, for control boundaries */
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 2.5rem 1rem 3.5rem;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Avenir", "Afacad", -apple-system, "Segoe UI", sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    overflow-wrap: break-word;
+  }
+
+  .sheet {
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover { text-decoration: underline; }
+
+  /* In-prose links need a non-colour cue: accent on muted body text is 1.40:1. */
+  p a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: from-font;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  pre:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .back {
+    display: inline-block;
+    margin-bottom: 2.25rem;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 1.1rem + 1.9vw, 2.125rem);
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin: 2.75rem 0 0.75rem;
+  }
+
+  p { margin: 0 0 1rem; }
+
+  .authors {
+    margin: 0 0 0.5rem;
+    line-height: 1.8;
+  }
+  .authors .me { font-weight: 600; }
+  .authors sup { font-size: 0.72em; }
+
+  .affil,
+  .venue,
+  .award,
+  .doi {
+    font-size: 0.9375rem;
+    color: var(--muted);
+    margin: 0 0 0.35rem;
+  }
+  .affil sup { font-size: 0.8em; }
+  .venue { margin-top: 0.75rem; }
+  .venue em { font-style: normal; color: var(--ink); }
+  .award strong { font-weight: 600; color: var(--ink); }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 2rem 0 0;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    align-items: center;
+    margin: 1.75rem 0 0;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.7rem 1.35rem;
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .btn:hover {
+    background: #3E5C38;
+    color: var(--bg);
+    text-decoration: none;
+  }
+
+  .actions .note {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .abstract { text-align: left; }
+
+  .terms {
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .bibwrap { position: relative; }
+
+  pre {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 1.1rem 1.15rem;
+    margin: 0;
+    overflow-x: auto;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    tab-size: 2;
+  }
+
+  .copy {
+    font: inherit;
+    font-size: 0.8125rem;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--rule-strong);
+    border-radius: 3px;
+    padding: 0.35rem 0.75rem;
+    margin-bottom: 0.6rem;
+    cursor: pointer;
+  }
+  .copy:hover { background: var(--panel); }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  footer p { margin: 0 0 0.75rem; }
+  footer p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 400px) {
+    body { padding: 2rem 1rem 3rem; font-size: 1rem; }
+    pre { font-size: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <a class="back" href="../">&#8592; khoaphamdinh.com</a>
+
+  <main>
+    <header>
+      <h1>Evaluating the Emerging MPEG Video Coding for Machines in Semantic Segmentation</h1>
+
+      <p class="authors">
+        <span class="me">Khoa Pham-Dinh</span><sup>1,2</sup>,
+        Farhad Pakdaman<sup>1,2</sup>,
+        Honglei Zhang<sup>2</sup>,
+        Hamed Rezazadegan Tavakoli<sup>2</sup>,
+        Nam Le<sup>1,2</sup>,
+        Jukka Ahonen<sup>1,2</sup>,
+        Moncef Gabbouj<sup>1</sup>
+      </p>
+
+      <p class="affil">
+        <sup>1</sup>Dept. of Computing Sciences, Tampere University &nbsp;&middot;&nbsp;
+        <sup>2</sup>Nokia Technologies
+      </p>
+
+      <p class="venue">
+        <em>2025 IEEE International Symposium on Multimedia (ISM). Naples, Italy, 8&ndash;10 December 2025, pp. 141&ndash;148.</em>
+      </p>
+
+      <p class="award"><strong>Candidate for the Best Paper Award.</strong></p>
+
+      <p class="doi">
+        DOI: <a href="https://doi.org/10.1109/ISM66958.2025.00038">10.1109/ISM66958.2025.00038</a>
+      </p>
+    </header>
+
+    <div class="actions">
+      <a class="btn" href="https://doi.org/10.1109/ISM66958.2025.00038">Read on IEEE Xplore</a>
+      <span class="note">Published version at the publisher, opened through doi.org.</span>
+    </div>
+
+    <hr>
+
+    <h2>Abstract</h2>
+    <p class="abstract">Emerging MPEG Video Coding for Machines (MPEG VCM) standardization activities address the growing demand for machine-to-machine visual applications, including video surveillance, autonomous driving, etc. This paper proposes an evaluation methodology tailored to MPEG VCM, with an emphasis on semantic segmentation tasks using the Pandaset dataset. This is a challenging target as standardization works must follow several limitations, such as dataset&#8217;s licensing, fixed tools and software, and compliance with existing common test conditions (CTC) for the standard&#8217;s development. The proposed evaluation methodology includes a step to align Pandaset and COCO labels. Two task networks, Detectron2 and Mask2Former, are used to evaluate the Rate-Performance behavior for semantic segmentation under various coding configurations. The performance of MPEG VCM is benchmarked against traditional codecs (VVC and HEVC), with a detailed analysis of MPEG VCM&#8217;s coding tools. The extensive evaluations reveal interesting observations. (1) Although VCM achieved reasonably good segmentation performance, some of its developed tools, such as temporal resampling and region-of-interest coding, were not well suited for segmentation task. (2) The Hybrid NNVVC Inner Codec outperformed the VVC Inner Codec. (3) VCM&#8217;s performance varies significantly for segmented classes. (4) Despite significant differences in human vision performance, VVC and HEVC exhibit relatively similar performance in machine vision. The main contributions of this work are to (1) enable evaluation of MPEG VCM in a real-world semantic segmentation use case, which is one of VCM&#8217;s targeted tasks, and (2) to provide a detailed assessment of VCM&#8217;s performance in semantic segmentation.</p>
+
+    <p class="terms"><strong>Index terms:</strong> video compression, video coding for machines, semantic segmentation, autonomous driving, computer vision</p>
+
+    <h2>Standardization impact</h2>
+    <p>The evaluation methodology from this work was adopted into the MPEG Common Test Conditions used to develop the Video Coding for Machines standard (MPEG contribution <a href="../#std-1">m67677</a>, ISO/IEC JTC 1/SC 29/WG 4, April 2024).</p>
+
+    <h2>BibTeX</h2>
+    <div class="bibwrap">
+<pre id="bibtex" tabindex="0" role="region" aria-label="BibTeX entry">@inproceedings{phamdinh2025vcm,
+  author    = {Pham-Dinh, Khoa and Pakdaman, Farhad and Zhang, Honglei and
+               Rezazadegan Tavakoli, Hamed and Le, Nam and Ahonen, Jukka and
+               Gabbouj, Moncef},
+  title     = {Evaluating the Emerging {MPEG} Video Coding for Machines in
+               Semantic Segmentation},
+  booktitle = {2025 IEEE International Symposium on Multimedia (ISM)},
+  address   = {Naples, Italy},
+  year      = {2025},
+  month     = dec,
+  pages     = {141--148},
+  publisher = {IEEE},
+  doi       = {10.1109/ISM66958.2025.00038}
+}</pre>
+    </div>
+  </main>
+
+  <footer>
+    <p>This page is a stable landing page for the paper. The definitive version of record is published by IEEE and is available on IEEE Xplore through the DOI above; no copy of the PDF is hosted here.</p>
+    <p>&copy; 2025 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future media, including reprinting/republishing this material for advertising or promotional purposes, creating new collective works, for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.</p>
+  </footer>
+
+</div>
+
+<script>
+  // Progressive enhancement only: the BibTeX above is fully readable and
+  // selectable without JavaScript, so the button is added only if JS runs.
+  (function () {
+    var pre = document.getElementById('bibtex');
+    if (!pre || !pre.parentNode) return;
+    // No Clipboard API (file://, plain http, older browser) means no button,
+    // rather than a button that looks live and does nothing.
+    if (!navigator.clipboard || !navigator.clipboard.writeText) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy';
+    btn.textContent = 'Copy BibTeX';
+    var reset = function () {
+      setTimeout(function () { btn.textContent = 'Copy BibTeX'; }, 2000);
+    };
+    btn.addEventListener('click', function () {
+      navigator.clipboard.writeText(pre.textContent).then(function () {
+        btn.textContent = 'Copied';
+        reset();
+      }, function () {
+        btn.textContent = 'Copy failed — select the text instead';
+        reset();
+      });
+    });
+    pre.parentNode.insertBefore(btn, pre);
+  })();
+</script>
+</body>
+</html>

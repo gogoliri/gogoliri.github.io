@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<!--
+  ================= THE DOI SWITCH =================
+  The CV prints https://khoaphamdinh.com/papers/oxygen-gait.html and never changes.
+  Today that URL shows this page, which describes the article and points to the
+  open-access version of record at PLOS.
+
+  This paper already has its DOI, and the line directly below already contains it.
+  If you would rather the stable URL send readers straight to the publisher,
+  uncomment that ONE line: delete the comment opener at the start of the line and
+  the comment closer at the end of the line, then save, commit, push. The URL
+  printed in the CV then redirects instantly to the article on the PLOS site, in
+  every browser, with no JavaScript involved. Leave it commented to keep this
+  landing page. It is your choice either way.
+  ==================================================
+-->
+<!-- <meta http-equiv="refresh" content="0; url=https://doi.org/10.1371/journal.pone.0303317"> -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estimating intra- and inter-subject oxygen consumption in outdoor human gait using multiple neural network approaches &mdash; Khoa Pham-Dinh</title>
+<link rel="canonical" href="https://khoaphamdinh.com/papers/oxygen-gait.html">
+
+<!-- Google Scholar indexing -->
+<meta name="citation_title" content="Estimating intra- and inter-subject oxygen consumption in outdoor human gait using multiple neural network approaches">
+<meta name="citation_author" content="M&uuml;ller, Philipp">
+<meta name="citation_author" content="Pham-Dinh, Khoa">
+<meta name="citation_author" content="Trinh, Huy">
+<meta name="citation_author" content="Rauhameri, Anton">
+<meta name="citation_author" content="Cronin, Neil J.">
+<meta name="citation_journal_title" content="PLOS ONE">
+<meta name="citation_volume" content="19">
+<meta name="citation_issue" content="9">
+<meta name="citation_firstpage" content="e0303317">
+<meta name="citation_publication_date" content="2024/09/27">
+<meta name="citation_doi" content="10.1371/journal.pone.0303317">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Estimating intra- and inter-subject oxygen consumption in outdoor human gait using multiple neural network approaches">
+<meta property="og:description" content="Five neural network architectures tested for inter-subject estimation of oxygen consumption during outdoor walking and running. PLOS ONE 19(9): e0303317, 2024. Open access under CC BY 4.0.">
+<meta property="og:url" content="https://khoaphamdinh.com/papers/oxygen-gait.html">
+
+<style>
+  :root {
+    --bg: #F5EFE1;          /* warm cream */
+    --ink: #1E2A1A;         /* soft near-black, green-tinted */
+    --accent: #4B6F44;      /* Green Satin */
+    --panel: #EDE5D2;       /* slightly deeper cream for blocks */
+    --rule: #D8CEB6;        /* hairline */
+    --muted: #4A5342;       /* secondary text */
+    --rule-strong: #8E8468; /* 3.24:1 on --bg, for control boundaries */
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 2.5rem 1rem 3.5rem;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Avenir", "Afacad", -apple-system, "Segoe UI", sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    overflow-wrap: break-word;
+  }
+
+  .sheet {
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover { text-decoration: underline; }
+
+  /* In-prose links need a non-colour cue: accent on muted body text is 1.40:1. */
+  p a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: from-font;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  pre:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .back {
+    display: inline-block;
+    margin-bottom: 2.25rem;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 1.1rem + 1.9vw, 2.125rem);
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin: 2.75rem 0 0.75rem;
+  }
+
+  /* Keep sub/sup out of the line box so leading stays even. */
+  sub, sup {
+    font-size: 0.72em;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sup { top: -0.45em; }
+  sub { bottom: -0.2em; }
+
+  p { margin: 0 0 1rem; }
+
+  .authors {
+    margin: 0 0 0.5rem;
+    line-height: 1.8;
+  }
+  .authors .me { font-weight: 600; }
+  .authors sup { font-size: 0.72em; }
+
+  .affil,
+  .venue,
+  .corr,
+  .doi {
+    font-size: 0.9375rem;
+    color: var(--muted);
+    margin: 0 0 0.35rem;
+  }
+  .affil sup { font-size: 0.8em; }
+  .venue { margin-top: 0.75rem; }
+  .venue em { font-style: normal; color: var(--ink); }
+  .venue cite { font-style: italic; color: var(--ink); }
+  .doi { margin-bottom: 0; }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 2rem 0 0;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    align-items: center;
+    margin: 1.75rem 0 0;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.7rem 1.35rem;
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .btn:hover {
+    background: #3E5C38;
+    color: var(--bg);
+    text-decoration: none;
+  }
+
+  /* Secondary action: same shape, drawn like the Copy-BibTeX control so it
+     reads as the quieter of the two links rather than a second primary. */
+  .btn.secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--rule-strong);
+    padding: calc(0.7rem - 1px) calc(1.35rem - 1px);
+  }
+  .btn.secondary:hover {
+    background: var(--panel);
+    color: var(--accent);
+  }
+
+  .actions .note {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .abstract { text-align: left; }
+
+  .terms {
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .bibwrap { position: relative; }
+
+  pre {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 1.1rem 1.15rem;
+    margin: 0;
+    overflow-x: auto;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    tab-size: 2;
+  }
+
+  .copy {
+    font: inherit;
+    font-size: 0.8125rem;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--rule-strong);
+    border-radius: 3px;
+    padding: 0.35rem 0.75rem;
+    margin-bottom: 0.6rem;
+    cursor: pointer;
+  }
+  .copy:hover { background: var(--panel); }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  footer p { margin: 0 0 0.75rem; }
+  footer p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 400px) {
+    body { padding: 2rem 1rem 3rem; font-size: 1rem; }
+    pre { font-size: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <a class="back" href="../">&#8592; khoaphamdinh.com</a>
+
+  <main>
+    <header>
+      <h1>Estimating intra- and inter-subject oxygen consumption in outdoor human gait using multiple neural network approaches</h1>
+
+      <p class="authors">
+        Philipp M&uuml;ller<sup>&dagger;,1</sup>,
+        <span class="me">Khoa Pham-Dinh</span><sup>&dagger;,1</sup>,
+        Huy Trinh<sup>1</sup>,
+        Anton Rauhameri<sup>2</sup>,
+        Neil J. Cronin<sup>3</sup>
+      </p>
+
+      <p class="affil">
+        <sup>1</sup>Faculty of Information Technology and Communication Sciences, Tampere University, Tampere, Finland&nbsp;&middot;
+        <sup>2</sup>Faculty of Medicine and Health Sciences, Tampere University, Tampere, Finland&nbsp;&middot;
+        <sup>3</sup>Faculty of Sport and Health Sciences, University of Jyv&auml;skyl&auml;, Jyv&auml;skyl&auml;, Finland
+      </p>
+
+      <p class="corr">
+        <sup>&dagger;</sup>Philipp M&uuml;ller and Khoa Pham-Dinh contributed equally to this work.
+      </p>
+
+      <p class="venue">
+        <cite>PLOS ONE</cite> 19(9): e0303317 &mdash; published 27 September 2024.
+      </p>
+
+      <p class="doi">
+        DOI: <a href="https://doi.org/10.1371/journal.pone.0303317">10.1371/journal.pone.0303317</a>
+      </p>
+    </header>
+
+    <div class="actions">
+      <a class="btn" href="https://doi.org/10.1371/journal.pone.0303317">Read the article at PLOS &#8594;</a>
+      <a class="btn secondary" href="https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0303317&amp;type=printable">Publisher&#8217;s PDF, hosted by PLOS</a>
+      <span class="note">Both links leave this site and go to PLOS. The article is open access, so no subscription or payment is needed.</span>
+    </div>
+
+    <hr>
+
+    <h2>Abstract</h2>
+    <p class="abstract">Oxygen consumption (VO<sub>2</sub>) is an important measure for exercise test, such as walking and running, that can be measured outdoors using portable spirometers or metabolic analyzers. However, these devices are not feasible for regular use by consumers as they intervene with the user&#8217;s physical integrity, and are expensive and difficult to operate. To circumvent these drawbacks, indirect estimation of VO<sub>2</sub> using neural networks combined with motion features and heart rate measurements collected with consumer-grade sensors has been shown to yield reasonably accurate VO<sub>2</sub> for intra-subject estimation. However, estimating VO<sub>2</sub> with neural networks trained with data from other individuals than the user, known as inter-subject estimation, remains an open problem. In this paper, five types of neural network architectures were tested in various configurations for inter-subject VO<sub>2</sub> estimation. To analyse predictive performance, data from 16 participants walking and running at speeds between 1.0 m/s and 3.3 m/s were used. The most promising approach was Xception network, which yielded average estimation errors as low as 2.43 ml&#215;min<sup>&minus;1</sup>&#215;kg<sup>&minus;1</sup>, suggesting that it could be used by athletes and running enthusiasts for monitoring their oxygen consumption over time to detect changes in their movement economy.</p>
+
+    <h2>Licence</h2>
+    <p>This article is fully open access. PLOS publishes it under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International licence (CC BY 4.0)</a>, which lets anyone read, download, redistribute and build on the work, including commercially, as long as the original authors and source are credited.</p>
+
+    <h2>BibTeX</h2>
+    <div class="bibwrap">
+<pre id="bibtex" tabindex="0" role="region" aria-label="BibTeX entry">@article{muller2024oxygen,
+  author  = {M\"{u}ller, Philipp and Pham-Dinh, Khoa and Trinh, Huy and
+             Rauhameri, Anton and Cronin, Neil J.},
+  title   = {Estimating intra- and inter-subject oxygen consumption in outdoor
+             human gait using multiple neural network approaches},
+  journal = {PLOS ONE},
+  volume  = {19},
+  number  = {9},
+  pages   = {e0303317},
+  year    = {2024},
+  doi     = {10.1371/journal.pone.0303317}
+}</pre>
+    </div>
+  </main>
+
+  <footer>
+    <p>This page is a stable pointer to the published article. The version of record is held by PLOS and is free to read there; no copy of it is hosted on this site.</p>
+    <p>&copy; 2024 M&uuml;ller et al. This is an open access article distributed under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>, which permits unrestricted use, distribution and reproduction in any medium, provided the original author and source are credited.</p>
+  </footer>
+
+</div>
+
+<script>
+  // Progressive enhancement only: the BibTeX above is fully readable and
+  // selectable without JavaScript, so the button is added only if JS runs.
+  (function () {
+    var pre = document.getElementById('bibtex');
+    if (!pre || !pre.parentNode) return;
+    // No Clipboard API (file://, plain http, older browser) means no button,
+    // rather than a button that looks live and does nothing.
+    if (!navigator.clipboard || !navigator.clipboard.writeText) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy';
+    btn.textContent = 'Copy BibTeX';
+    var reset = function () {
+      setTimeout(function () { btn.textContent = 'Copy BibTeX'; }, 2000);
+    };
+    btn.addEventListener('click', function () {
+      navigator.clipboard.writeText(pre.textContent).then(function () {
+        btn.textContent = 'Copied';
+        reset();
+      }, function () {
+        btn.textContent = 'Copy failed — select the text instead';
+        reset();
+      });
+    });
+    pre.parentNode.insertBefore(btn, pre);
+  })();
+</script>
+</body>
+</html>
