@@ -187,7 +187,13 @@
   }
 
 
-  .abstract { text-align: left; }
+  /* Running prose is justified; hyphenation keeps the rivers out. */
+  main > p:not(.terms),
+  footer p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
 
   .terms {
     font-size: 0.9375rem;

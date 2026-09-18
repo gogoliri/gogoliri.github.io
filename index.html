@@ -201,6 +201,15 @@
   .prose p{ margin:0 0 var(--sp-2); }
   .prose p:last-child{ margin-bottom:0; }
 
+  /* Running prose is justified; hyphenation keeps the rivers out. */
+  .prose p,
+  .entry ul li,
+  .std .venue{
+    text-align:justify;
+    -webkit-hyphens:auto;
+    hyphens:auto;
+  }
+
   /* ---------- publications ---------- */
 
   .pubs{ margin:0; padding-left:var(--gutter); }
