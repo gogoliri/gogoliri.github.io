@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<!--
+  ================= THE DOI SWITCH =================
+  https://khoaphamdinh.com/papers/quality-constrained-coding.html is the stable
+  address for this paper and never changes. Today that URL shows this page, which
+  is a stub: the manuscript is still in preparation and nothing about it is public.
+
+  When the publisher assigns a DOI, change the ONE line directly below:
+    1. Uncomment it, by deleting the comment opener at the start of the line
+       and the comment closer at the end of the line.
+    2. Replace XX.XXXX/XXXXX with the real DOI.
+  Save, commit, push. The stable URL then redirects straight to the publisher
+  page, in every browser, with no JavaScript involved.
+
+  Leave it commented if you would rather keep this landing page, the way
+  vcm-segmentation.html and oxygen-gait.html do.
+  ==================================================
+-->
+<!-- <meta http-equiv="refresh" content="0; url=https://doi.org/XX.XXXX/XXXXX"> -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You&#8217;ve Seen Enough: Quality-Constrained Image Coding For Machines &mdash; Khoa Pham-Dinh</title>
+<link rel="canonical" href="https://khoaphamdinh.com/papers/quality-constrained-coding.html">
+
+<!--
+  The manuscript is not public yet and this page carries no abstract, no venue and
+  no link, so it is kept out of search results rather than indexed as an empty
+  stub. DELETE the one line below when the paper goes public, otherwise Google and
+  Google Scholar will keep ignoring this page.
+-->
+<meta name="robots" content="noindex">
+
+<!-- Google Scholar indexing: only the tags that are true today. -->
+<meta name="citation_title" content="You've Seen Enough: Quality-Constrained Image Coding For Machines">
+<meta name="citation_author" content="Pham-Dinh, Khoa">
+<meta name="citation_author" content="Nami, Sanaz">
+<meta name="citation_author" content="Rezazadegan Tavakoli, Hamed">
+<meta name="citation_author" content="Gabbouj, Moncef">
+<meta name="citation_author" content="Pakdaman, Farhad">
+
+<!--
+  SCHOLAR PLACEHOLDERS: uncomment each line only once that fact exists, replace the
+  capitalised placeholder with the real value, delete the lines that do not apply
+  (a conference paper has no journal title, a journal paper has no conference
+  title), then delete this note. Never leave a guessed date, venue or PDF URL
+  here: Scholar indexes whatever it finds and a wrong citation is hard to undo.
+<meta name="citation_conference_title" content="VENUE NAME">
+<meta name="citation_journal_title" content="JOURNAL NAME">
+<meta name="citation_publisher" content="PUBLISHER">
+<meta name="citation_publication_date" content="YYYY/MM/DD">
+<meta name="citation_volume" content="VOLUME">
+<meta name="citation_issue" content="ISSUE">
+<meta name="citation_firstpage" content="FIRST">
+<meta name="citation_lastpage" content="LAST">
+<meta name="citation_doi" content="XX.XXXX/XXXXX">
+<meta name="citation_pdf_url" content="https://khoaphamdinh.com/papers/quality-constrained-coding.pdf">
+-->
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="You've Seen Enough: Quality-Constrained Image Coding For Machines">
+<meta property="og:description" content="A manuscript in preparation. Details will be posted here once the paper is public.">
+<meta property="og:url" content="https://khoaphamdinh.com/papers/quality-constrained-coding.html">
+
+<style>
+  :root {
+    --bg: #F5EFE1;          /* warm cream */
+    --ink: #1E2A1A;         /* soft near-black, green-tinted */
+    --accent: #4B6F44;      /* Green Satin */
+    --panel: #EDE5D2;       /* slightly deeper cream for blocks */
+    --rule: #D8CEB6;        /* hairline */
+    --muted: #4A5342;       /* secondary text */
+    --rule-strong: #8E8468; /* 3.24:1 on --bg, for control boundaries */
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 2.5rem 1rem 3.5rem;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Avenir", "Afacad", -apple-system, "Segoe UI", sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    overflow-wrap: break-word;
+  }
+
+  .sheet {
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover { text-decoration: underline; }
+
+  /* In-prose links need a non-colour cue: accent on muted body text is 1.40:1. */
+  p a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: from-font;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  pre:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .back {
+    display: inline-block;
+    margin-bottom: 2.25rem;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 1.1rem + 1.9vw, 2.125rem);
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin: 2.75rem 0 0.75rem;
+  }
+
+  p { margin: 0 0 1rem; }
+
+  .authors {
+    margin: 0 0 0.5rem;
+    line-height: 1.8;
+  }
+  .authors .me { font-weight: 600; }
+  .authors sup { font-size: 0.72em; }
+
+  .affil,
+  .venue,
+  .corr,
+  .doi,
+  .status {
+    font-size: 0.9375rem;
+    color: var(--muted);
+    margin: 0 0 0.35rem;
+  }
+  .affil sup { font-size: 0.8em; }
+  .venue { margin-top: 0.75rem; }
+  .venue em { font-style: normal; color: var(--ink); }
+  .status strong { font-weight: 600; color: var(--ink); }
+
+  /* The status line sits where the sibling pages put their .actions row. */
+  .status { margin-top: 1.75rem; }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 2rem 0 0;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    align-items: center;
+    margin: 1.75rem 0 0;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.7rem 1.35rem;
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .btn:hover {
+    background: #3E5C38;
+    color: var(--bg);
+    text-decoration: none;
+  }
+
+  .actions .note {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  /* Running prose is justified; hyphenation keeps the rivers out. The index terms
+     and the status line are metadata, so they stay ragged. */
+  main > p:not(.terms):not(.status),
+  footer p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .terms {
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .bibwrap { position: relative; }
+
+  pre {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 1.1rem 1.15rem;
+    margin: 0;
+    overflow-x: auto;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    tab-size: 2;
+  }
+
+  .copy {
+    font: inherit;
+    font-size: 0.8125rem;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--rule-strong);
+    border-radius: 3px;
+    padding: 0.35rem 0.75rem;
+    margin-bottom: 0.6rem;
+    cursor: pointer;
+  }
+  .copy:hover { background: var(--panel); }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  footer p { margin: 0 0 0.75rem; }
+  footer p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 400px) {
+    body { padding: 2rem 1rem 3rem; font-size: 1rem; }
+    pre { font-size: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <a class="back" href="../">&#8592; khoaphamdinh.com</a>
+
+  <main>
+    <header>
+      <h1>You&#8217;ve Seen Enough: Quality-Constrained Image Coding For Machines</h1>
+
+      <p class="authors">
+        <span class="me">Khoa Pham-Dinh</span>,
+        Sanaz Nami,
+        Hamed Rezazadegan Tavakoli,
+        Moncef Gabbouj,
+        Farhad Pakdaman
+      </p>
+
+      <!--
+        AFFILIATIONS: uncomment when the affiliation list is settled, replace each
+        placeholder with the real institution, add the matching superscript markers
+        to the author list above, then delete this note. Delete the corresponding
+        author line if there is none.
+      <p class="affil">
+        <sup>1</sup>INSTITUTION ONE &nbsp;&middot;&nbsp;
+        <sup>2</sup>INSTITUTION TWO
+      </p>
+
+      <p class="corr">
+        <sup>*</sup>Corresponding author:
+        <a href="mailto:ADDRESS">ADDRESS</a>.
+      </p>
+      -->
+
+      <!--
+        VENUE: uncomment once the paper is accepted, replace with the real
+        conference or journal, city, country and dates, then delete this note.
+      <p class="venue">
+        <em>VENUE NAME. CITY, COUNTRY, DD&ndash;DD MONTH YYYY.</em>
+      </p>
+      -->
+
+      <!--
+        DOI: uncomment once the DOI is issued, replace both copies of
+        XX.XXXX/XXXXX with the real DOI, then delete this note.
+      <p class="doi">
+        DOI: <a href="https://doi.org/XX.XXXX/XXXXX">XX.XXXX/XXXXX</a>
+      </p>
+      -->
+    </header>
+
+    <p class="status">
+      <strong>Manuscript in preparation.</strong>
+      This page is the stable address for the paper. The abstract, the venue and a
+      link to the full text will be posted here once it is public.
+    </p>
+
+    <!--
+      ACTIONS: uncomment when there is finally something to link to, and delete the
+      status line above at the same time. Keep the PDF button only if a copy is
+      hosted next to this file as papers/quality-constrained-coding.pdf; keep the
+      DOI button only once the DOI exists; delete whichever of the two does not
+      apply, along with this note.
+    <div class="actions">
+      <a class="btn" href="quality-constrained-coding.pdf">Read the PDF</a>
+      <span class="note">Author&#8217;s accepted version.</span>
+      <a class="btn" href="https://doi.org/XX.XXXX/XXXXX">Read the published version</a>
+    </div>
+    -->
+
+    <!--
+      RULE: uncomment together with the sections below, so that the page never ends
+      on a stray horizontal rule while it is still a stub.
+    <hr>
+    -->
+
+    <!--
+      ABSTRACT: uncomment and paste the final abstract, as a single paragraph, then
+      delete this note. Leave it commented until the real abstract exists rather
+      than writing a stand-in summary.
+    <h2>Abstract</h2>
+    <p class="abstract">PASTE THE FINAL ABSTRACT HERE, AS ONE PARAGRAPH.</p>
+    -->
+
+    <!--
+      INDEX TERMS: uncomment and replace with the paper&#8217;s own keyword list,
+      comma separated and in the order the paper prints them, then delete this note.
+    <p class="terms"><strong>Index terms:</strong> KEYWORD, KEYWORD, KEYWORD</p>
+    -->
+
+    <!--
+      BIBTEX: uncomment once there is a venue to cite. The title and all five
+      authors below are already correct and need no editing. Change @unpublished to
+      @inproceedings or @article (or keep @unpublished, or use @misc, while the
+      paper is only on a preprint server), rename the citation key to the published
+      year in the style of phamdinh2026quality, fill in year, add booktitle or
+      journal plus address, month, pages, publisher and doi, drop the note field
+      once it is published, then delete this note. The Copy BibTeX button at the
+      foot of this file attaches itself automatically as soon as this block is live.
+    <h2>BibTeX</h2>
+    <div class="bibwrap">
+<pre id="bibtex" tabindex="0" role="region" aria-label="BibTeX entry">@unpublished{phamdinh_quality_constrained,
+  author = {Pham-Dinh, Khoa and Nami, Sanaz and Rezazadegan Tavakoli, Hamed and
+            Gabbouj, Moncef and Pakdaman, Farhad},
+  title  = {You've Seen Enough: Quality-Constrained Image Coding For Machines},
+  note   = {Manuscript in preparation},
+  year   = {YYYY}
+}</pre>
+    </div>
+    -->
+  </main>
+
+  <footer>
+    <p>This page is a stable landing page for a manuscript that is still in preparation. It carries no abstract, no venue and no copy of the text yet; those will be added here as soon as the paper is public.</p>
+
+    <!--
+      COPYRIGHT: uncomment once the paper is published and replace with the
+      publisher&#8217;s required notice, copying the wording used by the sibling page
+      for that publisher (casr.html and vcm-segmentation.html carry the IEEE notice,
+      oxygen-gait.html carries the CC BY notice), then delete this note.
+    <p>&copy; YYYY PUBLISHER. PUBLISHER&#8217;S REQUIRED COPYRIGHT NOTICE.</p>
+    -->
+  </footer>
+
+</div>
+
+<script>
+  // Progressive enhancement only: the BibTeX above is fully readable and
+  // selectable without JavaScript, so the button is added only if JS runs.
+  // While the BibTeX block is still commented out there is no #bibtex element,
+  // and this exits quietly; it needs no editing when that block goes live.
+  (function () {
+    var pre = document.getElementById('bibtex');
+    if (!pre || !pre.parentNode) return;
+    // No Clipboard API (file://, plain http, older browser) means no button,
+    // rather than a button that looks live and does nothing.
+    if (!navigator.clipboard || !navigator.clipboard.writeText) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy';
+    btn.textContent = 'Copy BibTeX';
+    var reset = function () {
+      setTimeout(function () { btn.textContent = 'Copy BibTeX'; }, 2000);
+    };
+    btn.addEventListener('click', function () {
+      navigator.clipboard.writeText(pre.textContent).then(function () {
+        btn.textContent = 'Copied';
+        reset();
+      }, function () {
+        btn.textContent = 'Copy failed — select the text instead';
+        reset();
+      });
+    });
+    pre.parentNode.insertBefore(btn, pre);
+  })();
+</script>
+</body>
+</html>
