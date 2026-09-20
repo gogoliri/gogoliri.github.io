@@ -267,6 +267,18 @@
     border-color:var(--accent);
     color:var(--bg);
   }
+  /* The paper's own page is the primary link of each entry, so it is filled;
+     DOIs and contribution numbers stay outlined beside it. */
+  .chip.primary{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:var(--bg);
+  }
+  .chip.primary:hover,.chip.primary:focus-visible{
+    background:var(--accent-deep);
+    border-color:var(--accent-deep);
+    color:var(--bg);
+  }
 
   /* ---------- standardization ---------- */
 
@@ -489,7 +501,7 @@
           <p class="authors"><span class="me">Khoa Pham-Dinh</span>, Francesco Cricri, Maria Santamaria, Honglei Zhang, Hamed Rezazadegan Tavakoli, Moncef Gabbouj, Juho Kannala, Miska M. Hannuksela</p>
           <p class="venue"><em>IEEE International Workshop on Multimedia Signal Processing (MMSP)</em>, Istanbul, Turkey, 22&ndash;24 September 2026.</p>
           <ul class="links" role="list">
-            <li><a class="chip" href="papers/casr.html">Paper</a></li>
+            <li><a class="chip primary" href="papers/casr.html">Details</a></li>
           </ul>
         </li>
         <li id="pub-2" value="2">
@@ -497,7 +509,7 @@
           <p class="authors"><span class="me">Khoa Pham-Dinh</span>, Farhad Pakdaman, Honglei Zhang, Hamed Rezazadegan Tavakoli, Nam Le, Jukka Ahonen, Moncef Gabbouj</p>
           <p class="venue"><em>IEEE International Symposium on Multimedia (ISM)</em>, 2025, pp. 141&ndash;148. <span class="note">Candidate for Best Paper Award.</span></p>
           <ul class="links" role="list">
-            <li><a class="chip" href="papers/vcm-segmentation.html">Paper</a></li>
+            <li><a class="chip primary" href="papers/vcm-segmentation.html">Details</a></li>
             <li><a class="chip" href="https://doi.org/10.1109/ISM66958.2025.00038">DOI</a></li>
             <li><a class="chip" href="#std-1">Contribution m67677</a></li>
           </ul>
@@ -507,7 +519,7 @@
           <p class="authors">Philipp M&uuml;ller&dagger;, <span class="me">Khoa Pham-Dinh</span>&dagger;, Huy Trinh, Anton Rauhameri, Neil J. Cronin</p>
           <p class="venue"><em>PLOS ONE</em> 19(9):e0303317, 2024. &dagger;&nbsp;equal contribution.</p>
           <ul class="links" role="list">
-            <li><a class="chip" href="papers/oxygen-gait.html">Paper</a></li>
+            <li><a class="chip primary" href="papers/oxygen-gait.html">Details</a></li>
             <li><a class="chip" href="https://doi.org/10.1371/journal.pone.0303317">DOI</a></li>
           </ul>
         </li>
@@ -519,7 +531,7 @@
           <p class="pub-title">You&rsquo;ve Seen Enough: Quality-Constrained Image Coding For Machines</p>
           <p class="authors"><span class="me">Khoa Pham-Dinh</span>, Sanaz Nami, Hamed Rezazadegan Tavakoli, Moncef Gabbouj, Farhad Pakdaman</p>
           <ul class="links" role="list">
-            <li><a class="chip" href="papers/quality-constrained-coding.html">Details</a></li>
+            <li><a class="chip primary" href="papers/quality-constrained-coding.html">Details</a></li>
           </ul>
         </li>
       </ol>
