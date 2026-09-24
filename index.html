@@ -204,7 +204,8 @@
   /* Running prose is justified; hyphenation keeps the rivers out. */
   .prose p,
   .entry ul li,
-  .std .venue{
+  .std .venue,
+  #news .val{
     text-align:justify;
     -webkit-hyphens:auto;
     hyphens:auto;
@@ -278,6 +279,20 @@
     background:var(--accent-deep);
     border-color:var(--accent-deep);
     color:var(--bg);
+  }
+  /* An award is a label, not a link: same footprint as a chip so the row stays
+     aligned, but tinted and borderless so it never reads as clickable. The tint
+     is green, not grey, so it cannot pass for a disabled button (6.1:1). */
+  .badge{
+    display:inline-block;
+    padding:.2rem .55rem;
+    border:1px solid transparent;
+    border-radius:2px;
+    background:rgba(75,111,68,.12);
+    font-size:var(--fs-1);
+    font-weight:600;
+    letter-spacing:.01em;
+    color:var(--accent-deep);
   }
 
   /* ---------- standardization ---------- */
@@ -438,6 +453,7 @@
     .page{ display:block; max-width:none; padding:0; }
     main{ max-width:none; }
     .entry,.pubs > li,.std > li{ break-inside:avoid; }
+    .sec > h2,.sub,.entry-head{ break-after:avoid; }
     a{ color:#000; text-decoration:none; }
     a[href^="http"]::after{ content:" (" attr(href) ")"; font-size:8pt; word-break:break-all; }
     a[href^="papers/"]::after{ content:" (khoaphamdinh.com/" attr(href) ")"; font-size:8pt; word-break:break-all; }
@@ -468,6 +484,7 @@
     <nav class="toc" aria-label="Sections of this page">
       <ul role="list">
         <li><a href="#about">About</a></li>
+        <li><a href="#news">News</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#standardization">Standardization</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -491,6 +508,16 @@
       </div>
     </section>
 
+    <section class="sec" id="news" aria-labelledby="news-h">
+      <h2 id="news-h">News</h2>
+      <ul class="rows kv" role="list">
+        <li>
+          <span class="key">Sep 2026</span>
+          <span class="val"><a href="papers/casr.html">CASR</a> received the Best Student Paper Award at the IEEE 28th International Workshop on Multimedia Signal Processing (MMSP 2026) in Istanbul.</span>
+        </li>
+      </ul>
+    </section>
+
     <section class="sec" id="publications" aria-labelledby="publications-h">
       <h2 id="publications-h">Publications</h2>
 
@@ -502,6 +529,7 @@
           <p class="venue"><em>IEEE International Workshop on Multimedia Signal Processing (MMSP)</em>, Istanbul, Turkey, 22&ndash;24 September 2026.</p>
           <ul class="links" role="list">
             <li><a class="chip primary" href="papers/casr.html">Details</a></li>
+            <li><span class="badge">Best Student Paper Award</span></li>
           </ul>
         </li>
         <li id="pub-2" value="2">

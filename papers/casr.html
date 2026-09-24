@@ -5,15 +5,22 @@
 
 <!--
   ================= THE DOI SWITCH =================
-  The CV prints https://khoaphamdinh.com/papers/casr.html and never changes.
-  Today that URL shows this page, which serves the accepted manuscript.
+  This page is the stable khoaphamdinh.com landing page for the paper, linked
+  from the homepage publication list. The CV prints the permanent link
+  https://khoaphamdinh.com/p/casr, which forwards here. Today this URL shows
+  the accepted manuscript.
 
-  When the publisher assigns a DOI, change the ONE line directly below:
+  When the publisher assigns a DOI, the ONE line directly below can turn this
+  page into a redirect:
     1. Uncomment it, by deleting the comment opener at the start of the line
        and the comment closer at the end of the line.
     2. Replace XX.XXXX/XXXXX with the real DOI.
-  Save, commit, push. The URL printed in the CV then redirects straight to the
-  publisher page, in every browser, with no JavaScript involved.
+  Save, commit, push. This URL then redirects straight to the publisher page,
+  in every browser, with no JavaScript involved.
+
+  Think twice before switching: this page carries the Best Student Paper Award
+  note, which the publisher page does not. Pointing /p/casr at the DOI instead
+  sends CV readers to the publisher and leaves this page as it is.
   ==================================================
 -->
 <!-- <meta http-equiv="refresh" content="0; url=https://doi.org/XX.XXXX/XXXXX"> -->
@@ -132,6 +139,7 @@
 
   .affil,
   .venue,
+  .award,
   .corr {
     font-size: 0.9375rem;
     color: var(--muted);
@@ -140,6 +148,7 @@
   .affil sup { font-size: 0.8em; }
   .venue { margin-top: 0.75rem; }
   .venue em { font-style: normal; color: var(--ink); }
+  .award strong { font-weight: 600; color: var(--ink); }
 
   hr {
     border: 0;
@@ -269,6 +278,8 @@
       <p class="venue">
         <em>IEEE International Workshop on Multimedia Signal Processing (MMSP). Istanbul, Turkey, 22&ndash;24 September 2026.</em>
       </p>
+
+      <p class="award"><strong>Best Student Paper Award.</strong></p>
     </header>
 
     <div class="actions">
