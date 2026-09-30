@@ -148,7 +148,20 @@
   .affil sup { font-size: 0.8em; }
   .venue { margin-top: 0.75rem; }
   .venue em { font-style: normal; color: var(--ink); }
-  .award strong { font-weight: 600; color: var(--ink); }
+  /* A won award is boxed in the accent green so it stands out from the grey
+     metadata lines above it. */
+  .award {
+    display: inline-block;
+    margin: 0.9rem 0 0.35rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--accent);
+    border-left-width: 4px;
+    border-radius: 3px;
+    background: rgba(75, 111, 68, 0.12);
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .award strong { font-weight: 600; color: #3A5735; }
 
   hr {
     border: 0;
@@ -284,7 +297,6 @@
 
     <div class="actions">
       <a class="btn" href="casr.pdf">Read the PDF</a>
-      <span class="note">Author&#8217;s accepted version.</span>
       <a class="btn" href="https://arxiv.org/abs/2609.37328">Read on arXiv</a>
     </div>
 
