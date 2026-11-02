@@ -1,0 +1,10 @@
+# The site nav, in order. `key` matches a page's `nav_key` to mark it current.
+- key: home
+  label: Home
+  url: /
+- key: cv
+  label: CV
+  url: /cv/
+- key: blog
+  label: Blog
+  url: /blog/

@@ -1,0 +1,384 @@
+/* Home, CV and Blog pages. Loads after base.css. */
+
+html{
+  font-size:106.25%;                   /* 17px base; scales with user preference */
+  -webkit-text-size-adjust:100%;
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font);
+  font-size:var(--fs-3);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+h1,h2,h3{ text-wrap:balance; }
+p{ text-wrap:pretty; }
+
+a{
+  color:var(--accent-deep);
+  text-decoration-color:rgba(75,111,68,.55);
+  text-decoration-thickness:.06em;
+  text-underline-offset:.17em;
+  transition:color .15s ease, text-decoration-color .15s ease;
+}
+a:hover{ color:var(--accent); text-decoration-color:currentColor; }
+
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+[id]{ scroll-margin-top:1.5rem; }
+main:focus{ outline:none; }
+
+/* ---------- shell ---------- */
+
+.page{
+  max-width:35rem;
+  margin:0 auto;
+  padding:clamp(2rem,6vw,4rem) clamp(1rem,4vw,2rem) 3rem;
+}
+
+main{ max-width:var(--measure); }
+
+/* ---------- identity ---------- */
+
+.identity{ margin-bottom:var(--sp-5); }
+
+.avatar{
+  display:block;
+  width:8.5rem;
+  height:8.5rem;
+  aspect-ratio:1/1;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.identity h1{
+  font-size:var(--fs-5);
+  font-weight:500;
+  letter-spacing:-.015em;
+  line-height:1.12;
+  margin:var(--sp-3) 0 var(--sp-1);
+}
+
+.role{
+  margin:0;
+  font-size:var(--fs-3);
+  line-height:1.4;
+  color:var(--accent-deep);
+  text-wrap:balance;
+}
+
+.place{
+  margin:var(--sp-1) 0 0;
+  font-size:var(--fs-2);
+  color:var(--muted);
+}
+
+.contact{
+  list-style:none;
+  margin:var(--sp-3) 0 0;
+  padding:var(--sp-2) 0 0;
+  border-top:1px solid var(--rule);
+  font-size:var(--fs-2);
+}
+.contact li{ margin:.3rem 0; }
+.contact a{ overflow-wrap:anywhere; }
+
+.toc{ display:none; }
+.toc ul{
+  list-style:none;
+  margin:var(--sp-3) 0 0;
+  padding:var(--sp-2) 0 0;
+  border-top:1px solid var(--rule);
+  display:grid;
+  grid-auto-flow:column;
+  grid-template-rows:repeat(5,auto);
+  column-gap:1rem;
+}
+.toc li{ margin:.34rem 0; }
+.toc a{
+  font-size:var(--fs-1);
+  color:var(--muted);
+  text-decoration:none;
+}
+.toc a:hover{ color:var(--accent-deep); text-decoration:underline; }
+
+/* ---------- sections ---------- */
+
+.sec + .sec{ margin-top:var(--sp-5); }
+
+.sec > h2{
+  font-size:var(--fs-2);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--accent);
+  margin:0 0 var(--sp-3);
+  padding-bottom:.5rem;
+  border-bottom:1px solid var(--rule);
+}
+
+.sub{
+  font-size:var(--fs-1);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  margin:0 0 var(--sp-2);
+}
+.sub + .pubs{ margin-bottom:var(--sp-4); }
+
+.prose p{ margin:0 0 var(--sp-2); }
+.prose p:last-child{ margin-bottom:0; }
+
+/* Running prose is justified; hyphenation keeps the rivers out. */
+.prose p,
+.entry ul li,
+.std .venue,
+#news .val{
+  text-align:justify;
+  -webkit-hyphens:auto;
+  hyphens:auto;
+}
+
+/* ---------- publications ---------- */
+
+.pubs{ margin:0; padding-left:var(--gutter); }
+.pubs > li{ margin:0 0 var(--sp-4); }
+.pubs > li:last-child{ margin-bottom:0; }
+.pubs > li::marker{
+  color:var(--accent);
+  font-size:var(--fs-2);
+  font-variant-numeric:tabular-nums;
+}
+
+.pub-title{
+  margin:0 0 var(--sp-1);
+  font-size:var(--fs-4);
+  font-weight:600;
+  line-height:1.34;
+}
+.authors{
+  margin:0 0 .18rem;
+  font-size:var(--fs-2);
+  line-height:1.5;
+  color:var(--muted);
+}
+.authors .me{ color:var(--ink); font-weight:600; }
+.venue{
+  margin:0;
+  font-size:var(--fs-2);
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+.note{ color:var(--accent-deep); }
+
+.links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4rem;
+  margin:var(--sp-2) 0 0;
+  padding:0;
+  list-style:none;
+}
+.chip{
+  display:inline-block;
+  padding:.2rem .55rem;
+  border:1px solid var(--edge);
+  border-radius:2px;
+  font-size:var(--fs-1);
+  font-weight:600;
+  letter-spacing:.01em;
+  color:var(--accent-deep);
+  text-decoration:none;
+  transition:background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.chip:hover,.chip:focus-visible{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:var(--bg);
+}
+/* The paper's own page is the primary link of each entry, so it is filled;
+   DOIs and contribution numbers stay outlined beside it. */
+.chip.primary{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:var(--bg);
+}
+.chip.primary:hover,.chip.primary:focus-visible{
+  background:var(--accent-deep);
+  border-color:var(--accent-deep);
+  color:var(--bg);
+}
+/* An award is a label, not a link: same footprint as a chip so the row stays
+   aligned, but tinted and borderless so it never reads as clickable. The tint
+   is green, not grey, so it cannot pass for a disabled button (6.1:1). */
+.badge{
+  display:inline-block;
+  padding:.2rem .55rem;
+  border:1px solid transparent;
+  border-radius:2px;
+  background:rgba(75,111,68,.12);
+  font-size:var(--fs-1);
+  font-weight:600;
+  letter-spacing:.01em;
+  color:var(--accent-deep);
+}
+
+/* ---------- standardization ---------- */
+
+.std{ list-style:none; margin:0; padding:0; }
+.std > li{
+  display:grid;
+  grid-template-columns:var(--gutter) minmax(0,1fr);
+  margin-bottom:var(--sp-4);
+}
+.std > li:last-child{ margin-bottom:0; }
+.sid{
+  font-size:var(--fs-2);
+  font-weight:600;
+  color:var(--accent);
+  font-variant-numeric:tabular-nums;
+  line-height:1.5;
+}
+.doc{ font-family:var(--mono); font-size:.9em; color:var(--accent-deep); }
+
+/* ---------- entries ---------- */
+
+.entry{ margin-bottom:var(--sp-4); }
+.entry:last-child{ margin-bottom:0; }
+
+.entry-head{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:0 1.25rem;
+}
+.entry-head h3{
+  flex:1 1 12rem;
+  margin:0;
+  font-size:var(--fs-4);
+  font-weight:600;
+  line-height:1.34;
+}
+.when{
+  font-size:var(--fs-1);
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+.org{
+  margin:.1rem 0 0;
+  font-size:var(--fs-2);
+  color:var(--muted);
+}
+.entry ul:not(.links){
+  margin:var(--sp-2) 0 0;
+  padding-left:1.1rem;
+  font-size:var(--fs-3);
+  line-height:1.55;
+  color:var(--ink-soft);
+}
+.entry ul:not(.links) li{ margin:.2rem 0; }
+.entry ul:not(.links) li::marker{ color:var(--accent); }
+
+/* ---------- label / value rows ---------- */
+
+.rows{ list-style:none; margin:0; padding:0; }
+.entry-head + .rows{ margin-top:var(--sp-2); }
+.rows > li{ padding:.5rem 0; border-top:1px solid var(--rule-soft); }
+.rows > li:first-child{ border-top:0; padding-top:0; }
+
+.kv > li{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  align-items:baseline;
+  column-gap:1rem;
+}
+.key{
+  font-size:var(--fs-1);
+  font-weight:600;
+  color:var(--muted);
+}
+.val{ font-size:var(--fs-2); color:var(--ink-soft); }
+
+.code{ font-family:var(--mono); font-size:var(--fs-1); color:var(--accent-deep); }
+.course-name{ display:block; font-size:var(--fs-2); }
+.terms{ display:block; font-size:var(--fs-1); color:var(--muted); }
+
+.awards > li{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:baseline;
+  column-gap:1.25rem;
+}
+.award-name{ font-size:var(--fs-2); }
+.award-name .detail{ display:block; font-size:var(--fs-1); color:var(--muted); }
+
+/* ---------- wider viewports ---------- */
+
+@media (min-width:34em){
+  .kv > li{ grid-template-columns:8rem minmax(0,1fr); }
+  .courses > li{ grid-template-columns:6.5rem minmax(0,1fr); }
+}
+
+@media (min-width:60em){
+  .page{
+    max-width:57rem;
+    display:grid;
+    grid-template-columns:minmax(0,17rem) minmax(0,var(--measure));
+    column-gap:clamp(2rem,4vw,4.5rem);
+    row-gap:0;
+    align-items:start;
+    justify-content:center;
+  }
+  .identity{ margin-bottom:0; }
+  .toc{ display:block; }
+  .foot{ grid-column:1 / -1; }
+  /* the rail is denser than the running column */
+  .avatar{ width:7.25rem; height:7.25rem; }
+  .identity h1{ margin-top:var(--sp-2); }
+  .contact li{ margin:.14rem 0; }
+  .toc li{ margin:.16rem 0; }
+  .toc a{ line-height:1.45; }
+}
+
+/* Sticky only when the rail genuinely fits, and bounded so it can never
+   strand its own links off-screen on a short laptop display. */
+@media (min-width:60em) and (min-height:46em){
+  .identity{
+    position:sticky;
+    top:var(--stick);
+    max-height:calc(100vh - var(--stick) - 1.5rem);
+    max-height:calc(100dvh - var(--stick) - 1.5rem);
+    overflow-y:auto;
+    scrollbar-width:thin;
+    scrollbar-color:var(--edge) transparent;
+    /* room for focus rings inside the scroll container */
+    padding-inline:.3rem;
+    margin-inline:-.3rem;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ transition:none !important; animation:none !important; }
+}
+
+@media print{
+  body{ background:#fff; color:#000; font-size:10.5pt; }
+  .toc,.site-nav,.skip,.avatar{ display:none; }
+  .page{ display:block; max-width:none; padding:0; }
+  main{ max-width:none; }
+  .entry,.pubs > li,.std > li{ break-inside:avoid; }
+  .sec > h2,.sub,.entry-head{ break-after:avoid; }
+  a{ color:#000; text-decoration:none; }
+  a[href^="http"]::after{ content:" (" attr(href) ")"; font-size:8pt; word-break:break-all; }
+  a[href^="/papers/"]::after{ content:" (khoaphamdinh.com" attr(href) ")"; font-size:8pt; word-break:break-all; }
+}

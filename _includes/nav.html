@@ -1,0 +1,10 @@
+<nav class="site-nav" aria-label="Site">
+  {%- if include.brand %}
+  <a class="brand" href="/">{{ site.data.profile.name }}</a>
+  {%- endif %}
+  <ul role="list">
+    {%- for item in site.data.nav %}
+    <li><a href="{{ item.url }}"{% if item.key == page.nav_key %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+    {%- endfor %}
+  </ul>
+</nav>

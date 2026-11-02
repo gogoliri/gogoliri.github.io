@@ -1,0 +1,26 @@
+{%- assign p = site.data.profile -%}
+<header class="identity">
+    <img class="avatar" src="/avatar.jpg" alt="Portrait of {{ p.name }}"
+         width="1194" height="1194" decoding="async">
+    <h1>{{ p.name }}</h1>
+    <p class="role">{{ p.role }}</p>
+    <p class="place">{{ p.place }}</p>
+
+    <ul class="contact" role="list">
+      {%- for c in p.contact %}
+      <li><a href="{{ c.url | escape }}"{% if c.rel_me %} rel="me"{% endif %}>{{ c.label }}</a></li>
+      {%- endfor %}
+    </ul>
+
+    {% include nav.html %}
+    {%- if page.toc %}
+
+    <nav class="toc" aria-label="Sections of this page">
+      <ul role="list">
+        {%- for t in page.toc %}
+        <li><a href="#{{ t.id }}">{{ t.label }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    {%- endif %}
+  </header>

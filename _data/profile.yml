@@ -1,0 +1,24 @@
+# Identity shown in the left rail on every page, the site footer and the homepage head.
+name: Khoa Pham-Dinh
+role: Research Intern, Trustworthy and Adversarial Computing Lab, Aalto University
+place: Helsinki, Finland
+email: khoa.a.phamdinh@gmail.com
+description: "Khoa Pham-Dinh — research intern at the Trustworthy and Adversarial Computing Lab, Aalto University. Learned image and video coding for machines, neural post-filters for VVC, adversarial machine learning."
+og_description: "Research intern at the Trustworthy and Adversarial Computing Lab, Aalto University. Learned image and video coding for machines, neural post-filters for VVC, adversarial machine learning."
+# Shown in the footer as "Last updated …". Change by hand when the content changes.
+last_updated: September 2026
+contact:
+  - label: khoa.a.phamdinh@gmail.com
+    url: mailto:khoa.a.phamdinh@gmail.com
+  - label: Google Scholar
+    url: https://scholar.google.com/citations?user=fDkQ3CwAAAAJ&hl=en
+    rel_me: true
+  - label: GitHub
+    url: https://github.com/gogoliri
+    rel_me: true
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/khoaphamdinh/
+    rel_me: true
+  - label: ORCID 0009-0000-4558-3471
+    url: https://orcid.org/0009-0000-4558-3471
+    rel_me: true
