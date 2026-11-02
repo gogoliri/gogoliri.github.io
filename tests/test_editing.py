@@ -2,6 +2,9 @@
 one extra entry in every list file, is built once, and each entry must show
 up in its section."""
 
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 import pytest
 
 from helpers import build, copy_repo, page_path, soup
@@ -52,6 +55,12 @@ def edited_site(tmp_path_factory):
         path.write_text(text + ("" if text.endswith("\n") else "\n") + snippet, encoding="utf-8")
     (src / "_papers").mkdir(exist_ok=True)
     (src / "_papers" / "zz-sentinel.md").write_text(SENTINEL_PAPER, encoding="utf-8")
+    # A post dated today in Helsinki must publish even when UTC is still on
+    # yesterday (Review Focus 1).
+    today = datetime.now(ZoneInfo("Europe/Helsinki")).date().isoformat()
+    (src / "_posts").mkdir(exist_ok=True)
+    (src / "_posts" / f"{today}-sentinel-post.md").write_text(
+        "---\ntitle: SENTINEL post\n---\nHello **world**\n", encoding="utf-8")
     return build(src)
 
 
@@ -75,3 +84,14 @@ def test_new_paper_file_renders_everywhere(edited_site):
     assert metas[1].get("http-equiv") == "refresh"
     assert metas[1]["content"] == "0; url=https://doi.org/10.0000/sentinel"
     assert page.select_one("p.award strong").text == "Best Student Paper Award."
+
+
+def test_new_post_renders(edited_site):
+    items = soup(page_path(edited_site, "/blog/")).select("section#posts ul.rows > li")
+    assert len(items) == 1
+    link = items[0].find("a")
+    assert (link["href"], link.text) == ("/blog/sentinel-post/", "SENTINEL post")
+
+    post = soup(page_path(edited_site, "/blog/sentinel-post/"))
+    assert [a.text for a in post.select("nav.site-nav a") if a.get("aria-current") == "page"] == ["Blog"]
+    assert post.select_one("article.post .prose strong").text == "world"

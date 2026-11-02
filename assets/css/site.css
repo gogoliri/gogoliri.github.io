@@ -321,6 +321,17 @@ main{ max-width:var(--measure); }
 .award-name{ font-size:var(--fs-2); }
 .award-name .detail{ display:block; font-size:var(--fs-1); color:var(--muted); }
 
+/* ---------- blog posts ---------- */
+
+.post-title{
+  margin:0 0 var(--sp-1);
+  font-size:var(--fs-4);
+  font-weight:600;
+  line-height:1.34;
+}
+.post > header{ margin-bottom:var(--sp-3); }
+.post .when{ margin:0; }
+
 /* ---------- wider viewports ---------- */
 
 @media (min-width:34em){

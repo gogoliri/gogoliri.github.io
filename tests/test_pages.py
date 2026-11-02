@@ -6,6 +6,7 @@ import json
 import re
 
 import pytest
+import yaml
 
 from helpers import BASELINE, REPO, norm, page_path, soup
 
@@ -27,7 +28,7 @@ def test_section_order(site):
         assert [s["id"] for s in soup(page_path(site, url)).select("main section.sec")] == ids
 
 
-@pytest.mark.parametrize("url,key", [("/", "Home"), ("/cv/", "CV")])
+@pytest.mark.parametrize("url,key", [("/", "Home"), ("/cv/", "CV"), ("/blog/", "Blog")])
 def test_nav_marks_current(site, url, key):
     links = soup(page_path(site, url)).select("nav.site-nav a")
     assert [(a.text, a["href"]) for a in links] == [("Home", "/"), ("CV", "/cv/"), ("Blog", "/blog/")]
@@ -74,3 +75,13 @@ def test_print_rules():
     css = (REPO / "assets/css/site.css").read_text()
     print_block = css[css.index("@media print"):]
     assert ".site-nav" in print_block and 'a[href^="/papers/"]' in print_block
+
+
+def test_blog_empty_and_silent(site):
+    main = soup(page_path(site, "/blog/")).main
+    assert main.select("section#posts ul.rows > li") == []
+    assert " ".join(main.get_text().split()) == "Blog"
+
+
+def test_config_timezone():  # Review Focus 1
+    assert yaml.safe_load((REPO / "_config.yml").read_text())["timezone"] == "Europe/Helsinki"

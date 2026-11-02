@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+    <article class="post">
+      <header>
+        <h2 class="post-title">{{ page.title }}</h2>
+        <p class="when"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%-d %B %Y" }}</time></p>
+      </header>
+      <div class="prose">
+{{ content }}
+      </div>
+    </article>

@@ -36,3 +36,11 @@ defaults:
     values:
       layout: paper
       og_type: article
+  # Blog posts: _posts/YYYY-MM-DD-<slug>.md, served at /blog/<slug>/.
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      permalink: /blog/:title/
+      nav_key: blog

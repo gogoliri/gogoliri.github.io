@@ -1,0 +1,17 @@
+---
+layout: default
+title: Blog
+nav_key: blog
+---
+
+    <section class="sec" id="posts" aria-labelledby="posts-h">
+      <h2 id="posts-h">Blog</h2>
+      <ul class="rows kv" role="list">
+        {%- for post in site.posts %}
+        <li>
+          <span class="key">{{ post.date | date: "%-d %b %Y" }}</span>
+          <span class="val"><a href="{{ post.url }}">{{ post.title }}</a></span>
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
