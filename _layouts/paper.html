@@ -31,8 +31,9 @@
 
       <p class="venue">{{ page.venue }}</p>
       {%- endif %}
-      {%- if page.award %}
-      {%- assign award = site.data.awards | where: "key", page.award | first %}
+      {%- assign award = nil %}
+      {%- if page.award %}{% assign award = site.data.awards | where: "key", page.award | first %}{% endif %}
+      {%- if award %}
 
       <p class="award"><strong>{{ award.badge }}.</strong>{% if award.certificate %} <a href="{{ award.certificate }}">View the certificate</a>{% endif %}</p>
       {%- elsif page.page_note %}

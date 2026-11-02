@@ -32,7 +32,7 @@ SENTINEL_PAPER = """---
 doi_redirect: https://doi.org/10.0000/sentinel
 number: 99
 title: SENTINEL paper
-description: d
+description: 'd "q"'
 authors:
   - name: X
     me: true
@@ -41,7 +41,22 @@ award: mmsp2026-best-student-paper
 abstract: a
 bibtex: "@misc{s}"
 citation:
-  - [citation_title, SENTINEL paper]
+  - [citation_title, 'SENTINEL "quoted" paper']
+---
+"""
+
+# A paper whose award key matches nothing in _data/awards.yml.
+SENTINEL_BADKEY = """---
+number: 98
+title: SENTINEL badkey
+description: d
+authors:
+  - name: X
+award: no-such-award
+abstract: a
+bibtex: "@misc{b}"
+citation:
+  - [citation_title, SENTINEL badkey]
 ---
 """
 
@@ -55,6 +70,7 @@ def edited_site(tmp_path_factory):
         path.write_text(text + ("" if text.endswith("\n") else "\n") + snippet, encoding="utf-8")
     (src / "_papers").mkdir(exist_ok=True)
     (src / "_papers" / "zz-sentinel.md").write_text(SENTINEL_PAPER, encoding="utf-8")
+    (src / "_papers" / "zz-badkey.md").write_text(SENTINEL_BADKEY, encoding="utf-8")
     # A post dated today in Helsinki must publish even when UTC is still on
     # yesterday (Review Focus 1).
     today = datetime.now(ZoneInfo("Europe/Helsinki")).date().isoformat()
@@ -95,3 +111,15 @@ def test_new_post_renders(edited_site):
     post = soup(page_path(edited_site, "/blog/sentinel-post/"))
     assert [a.text for a in post.select("nav.site-nav a") if a.get("aria-current") == "page"] == ["Blog"]
     assert post.select_one("article.post .prose strong").text == "world"
+
+
+def test_quotes_in_front_matter_survive_in_meta(edited_site):
+    page = soup(page_path(edited_site, "/papers/zz-sentinel.html"))
+    assert page.find("meta", attrs={"name": "citation_title"})["content"] == 'SENTINEL "quoted" paper'
+    assert page.find("meta", property="og:description")["content"] == 'd "q"'
+    assert page.find("meta", attrs={"name": "description"})["content"] == 'd "q"'
+
+
+def test_unknown_award_key_draws_no_award_box(edited_site):
+    page = soup(page_path(edited_site, "/papers/zz-badkey.html"))
+    assert page.select("p.award") == []

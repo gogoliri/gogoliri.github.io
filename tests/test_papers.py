@@ -72,3 +72,13 @@ def test_award_keys_resolve():  # Review Focus 3
     for f in (REPO / "_papers").glob("*.md"):
         fm = yaml.safe_load(f.read_text().split("---")[1])
         assert fm.get("award") in (None, *keys), f.name
+
+
+def test_paper_front_matter_valid():  # Review Focus 2: a misspelled group must not pass as peer-reviewed
+    numbers = []
+    for f in sorted((REPO / "_papers").glob("*.md")):
+        fm = yaml.safe_load(f.read_text().split("---")[1])
+        assert fm.get("group") in (None, "peer-reviewed", "preprint"), f"{f.name}: group {fm.get('group')!r}"
+        assert isinstance(fm.get("number"), int), f"{f.name}: number {fm.get('number')!r}"
+        numbers.append(fm["number"])
+    assert len(numbers) == len(set(numbers)), f"duplicate numbers: {sorted(numbers)}"

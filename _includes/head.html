@@ -3,9 +3,11 @@
 <meta http-equiv="refresh" content="0; url={{ page.doi_redirect }}">
 {%- endif %}
 {%- assign p = site.data.profile %}
+{%- comment %} Values go into double-quoted attributes: turn " into &quot; but leave
+     existing entities (&uuml;) alone, so no `escape` filter here. {% endcomment %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% if page.title %}{{ page.title }} — {{ p.name }}{% else %}{{ p.name }}{% endif %}</title>
-<meta name="description" content="{{ page.description | default: p.description }}">
+<meta name="description" content="{{ page.description | default: p.description | replace: '"', '&quot;' }}">
 <meta name="author" content="{{ p.name }}">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#F5EFE1">
@@ -14,13 +16,13 @@
 
 <!-- Google Scholar indexing -->
 {%- for c in page.citation %}
-<meta name="{{ c[0] }}" content="{{ c[1] }}">
+<meta name="{{ c[0] }}" content="{{ c[1] | replace: '"', '&quot;' }}">
 {%- endfor %}
 {%- endif %}
 
 <meta property="og:type" content="{{ page.og_type | default: 'website' }}">
-<meta property="og:title" content="{{ page.og_title | default: page.title | default: p.name }}">
-<meta property="og:description" content="{{ page.og_description | default: page.description | default: p.og_description }}">
+<meta property="og:title" content="{{ page.og_title | default: page.title | default: p.name | replace: '"', '&quot;' }}">
+<meta property="og:description" content="{{ page.og_description | default: page.description | default: p.og_description | replace: '"', '&quot;' }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 {%- if page.og_image %}
 <meta property="og:image" content="{{ page.og_image }}">
