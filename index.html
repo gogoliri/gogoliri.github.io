@@ -16,12 +16,7 @@ og_image: https://khoaphamdinh.com/avatar.jpg
 
     <section class="sec" id="news" aria-labelledby="news-h">
       <h2 id="news-h">News</h2>
-      <ul class="rows kv" role="list">
-        <li>
-          <span class="key">Sep 2026</span>
-          <span class="val"><a href="/papers/casr.html">CASR</a> received the Best Student Paper Award at the IEEE 28th International Workshop on Multimedia Signal Processing (MMSP 2026) in Istanbul.</span>
-        </li>
-      </ul>
+      {% include kv-rows.html rows=site.data.news key="date" val="text" %}
     </section>
 
     <section class="sec" id="publications" aria-labelledby="publications-h">

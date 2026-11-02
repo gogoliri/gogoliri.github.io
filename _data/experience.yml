@@ -1,0 +1,36 @@
+# CV › Experience. Newest first. Bullets may contain HTML.
+- title: Research Intern
+  when: Jul 2026 &ndash; present
+  org: Trustworthy and Adversarial Computing Lab, Aalto University, Finland
+  bullets:
+    - 'Adversarial examples for cyber-physical vision systems: attacks realized in the physical world (printed patches, modified objects, AR/VR) rather than purely digital perturbations.'
+    - Gradient-based optimization of adversarial attacks on deep computer vision models under physical constraints.
+
+- title: Research Intern
+  when: Jul 2025 &ndash; Jul 2026
+  org: Visual AI System Research team, Nokia Technologies &amp; Aalto University, Finland
+  bullets:
+    - Super-resolution as post filter for Versatile Video Coding.
+    - Low-rank adaptation for model finetuning.
+    - Quantization-aware training and mixed-precision quantization for model compression.
+
+- title: Algorithm Engineer
+  when: May 2024 &ndash; Jun 2025
+  org: Nordic Inertial, Finland (part-time)
+  bullets:
+    - Built machine learning models for zero-velocity detection on IMU sensor data.
+    - Implemented sensor-fusion-based headlight leveling control in automotive vehicles.
+
+- title: Research Assistant
+  when: Nov 2023 &ndash; Feb 2024
+  org: Video Coding for Machines project, Nokia Technologies &amp; Tampere University, Finland
+  bullets:
+    - 'Defined the semantic-segmentation evaluation methodology for Video Coding for Machines (Detectron2 and Mask2Former as task networks), adopted into the MPEG Common Test Conditions used to develop the standard (<a href="#std-1">S1</a>) and published as <a href="/#pub-2">publication&nbsp;2</a>.'
+    - Evaluated the VCM standard on object detection and tracking using the TVD and SFU-HW datasets.
+
+- title: Research Assistant
+  when: May 2023 &ndash; Sep 2023
+  org: GaitMaven project for gait analysis, Tampere University, Finland
+  bullets:
+    - Performed sensor fusion across GPS-aided IMU, heart rate and spirometer streams from 16 participants, producing the synchronized dataset used for training.
+    - Benchmarked recurrent (RNN, LSTM, GRU), convolutional, ResNet, DenseNet and Xception architectures for oxygen-consumption estimation.

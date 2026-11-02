@@ -1,0 +1,20 @@
+{%- assign e = include.entry -%}
+<article class="entry">
+        <div class="entry-head">
+          <h3>{{ e.title }}</h3>
+          <span class="when">{{ e.when }}</span>
+        </div>
+        <p class="org">{{ e.org }}</p>
+        <ul>
+          {%- for b in e.bullets %}
+          <li>{{ b }}</li>
+          {%- endfor %}
+        </ul>
+        {%- if e.links %}
+        <ul class="links" role="list">
+          {%- for l in e.links %}
+          <li><a class="chip" href="{{ l.url }}">{{ l.label }}</a></li>
+          {%- endfor %}
+        </ul>
+        {%- endif %}
+      </article>

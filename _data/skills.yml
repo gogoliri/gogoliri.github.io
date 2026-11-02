@@ -1,0 +1,7 @@
+# CV › Technical skills, in the order shown.
+- key: Core
+  val: Python, PyTorch, C/C++, CUDA, ONNX, OpenCV
+- key: Data &amp; modelling
+  val: NumPy, Pandas, scikit-learn, MATLAB, SQL, R
+- key: Infrastructure
+  val: Linux/Bash, Slurm, Apptainer, multi-GPU HPC clusters

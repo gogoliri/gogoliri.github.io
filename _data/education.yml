@@ -1,0 +1,20 @@
+# CV › Education. Newest first. Bullets may contain HTML; `links` are outlined chips.
+- title: M.Sc., Computing Sciences
+  when: Aug 2023 &ndash; Dec 2025
+  org: Tampere University, Finland
+  bullets:
+    - Major in Signal Processing &amp; Machine Learning, minor in Applied Mathematics. GPA 5.00/5.
+    - 'Thesis (5/5), at the <a href="https://www.tuni.fi/en/tau/research/signal-analysis-and-machine-intelligence-sami">Signal Analysis and Machine Intelligence (SAMI) group</a>: <em>Optimizing the Rate-Quality-Task Performance in Learned Image Compression for Machine</em> &mdash; recast joint compression&ndash;segmentation training as constrained optimization over the rate&ndash;quality&ndash;performance trade-off.'
+  links:
+    - label: MSc thesis
+      url: https://trepo.tuni.fi/handle/10024/233128
+
+- title: B.Sc., Science and Engineering
+  when: Aug 2020 &ndash; May 2023
+  org: Tampere University, Finland
+  bullets:
+    - Major in Applied Mathematics, minor in Statistical Data Analysis. GPA 4.61/5.
+    - 'Thesis (5/5): <em>Representation Learning for Candlestick Time-Series Data: A Contrastive Learning Approach</em>.'
+  links:
+    - label: BSc thesis
+      url: https://trepo.tuni.fi/handle/10024/147793

@@ -1,0 +1,11 @@
+# CV › Standardization contributions. Newest first.
+# `id` is the link target (/cv/#std-1); keep existing ids stable.
+- id: std-2
+  label: S2.
+  title: Neural Network Super Resolution as Postfilter with Content Adaptation
+  venue: 'Document <span class="doc">JVET-AP0178-v1</span>, Joint Video Experts Team, 42nd meeting, April 2026. ITU-T SG21 WP3/21 and ISO/IEC JTC 1/SC 29.'
+
+- id: std-1
+  label: S1.
+  title: Semantic Segmentation for VCM with PandaSet
+  venue: 'Document <span class="doc">m67677</span>, ISO/IEC JTC 1/SC 29/WG 4 (MPEG Video Coding), April 2024. Adopted into the Common Test Conditions used to develop the Video Coding for Machines standard.'

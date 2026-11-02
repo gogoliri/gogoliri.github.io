@@ -1,0 +1,19 @@
+# CV › Teaching. Courses are listed in the order shown; keep `courses` the last key.
+role: Teaching Assistant, Tampere University
+when: 2022 &ndash; 2025
+courses:
+  - code: DATA.ML.300
+    name: Computer Vision
+    terms: Spring 2023, Spring 2024, Spring 2025
+  - code: DATA.ML.200
+    name: Pattern Recognition &amp; Machine Learning
+    terms: Spring 2023, Spring 2024
+  - code: DATA.ML.100
+    name: Introduction to Pattern Recognition &amp; Machine Learning
+    terms: Autumn 2022
+  - code: DATA.DB.100
+    name: Database Basics
+    terms: Autumn 2022, Spring 2023
+  - code: COMP.CS.320
+    name: Data Intensive Programming
+    terms: Autumn 2022

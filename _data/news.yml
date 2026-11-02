@@ -1,0 +1,5 @@
+# News on the homepage. Newest first: add new items at the top.
+# One sentence per item; `date` is shown as written ("Mon YYYY").
+# Values may contain HTML; quote them with single quotes when they do.
+- date: Sep 2026
+  text: '<a href="/papers/casr.html">CASR</a> received the Best Student Paper Award at the IEEE 28th International Workshop on Multimedia Signal Processing (MMSP 2026) in Istanbul.'

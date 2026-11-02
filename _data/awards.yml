@@ -1,0 +1,27 @@
+# CV › Awards and honours. Newest first. Each award is stored once.
+#   key          stable id; a paper names it with `award: <key>` in its _papers file
+#   name, detail the CV row (detail is the small second line; may contain HTML)
+#   when         the CV row's year column
+#   badge        paper awards only: the badge on the homepage entry, and the
+#                bold line "<badge>." on the paper's page
+#   certificate  paper awards only: linked as "View the certificate" on the paper's page
+- key: mmsp2026-best-student-paper
+  name: Best Student Paper Award, IEEE&nbsp;MMSP&nbsp;2026
+  detail: 'For <a href="/#pub-3">CASR</a>, with co-authors &middot; <a href="/papers/casr-award-certificate.jpg">Certificate</a>'
+  when: "2026"
+  badge: Best Student Paper Award
+  certificate: /papers/casr-award-certificate.jpg
+
+- key: tuni-academic-excellence
+  name: Academic Excellence Award, Tampere University
+  detail: EUR 7,000
+  when: 2021, 2023
+
+- key: tuni-tuition-scholarship
+  name: Tuition Fee Scholarship, Tampere University
+  detail: Full waiver for BSc and MSc
+  when: "2020"
+
+- key: vn-math-olympiad
+  name: Third Prize, National Mathematical Olympiad, Vietnam
+  when: "2020"

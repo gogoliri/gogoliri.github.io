@@ -22,217 +22,73 @@ toc:
     <section class="sec" id="standardization" aria-labelledby="standardization-h">
       <h2 id="standardization-h">Standardization contributions</h2>
       <ul class="std" role="list">
-        <li id="std-2">
-          <span class="sid">S2.</span>
+        {%- for s in site.data.standardization %}
+        <li id="{{ s.id }}">
+          <span class="sid">{{ s.label }}</span>
           <div>
-            <p class="pub-title">Neural Network Super Resolution as Postfilter with Content Adaptation</p>
-            <p class="venue">Document <span class="doc">JVET-AP0178-v1</span>, Joint Video Experts Team, 42nd meeting, April 2026. ITU-T SG21 WP3/21 and ISO/IEC JTC 1/SC 29.</p>
+            <p class="pub-title">{{ s.title }}</p>
+            <p class="venue">{{ s.venue }}</p>
           </div>
         </li>
-        <li id="std-1">
-          <span class="sid">S1.</span>
-          <div>
-            <p class="pub-title">Semantic Segmentation for VCM with PandaSet</p>
-            <p class="venue">Document <span class="doc">m67677</span>, ISO/IEC JTC 1/SC 29/WG 4 (MPEG Video Coding), April 2024. Adopted into the Common Test Conditions used to develop the Video Coding for Machines standard.</p>
-          </div>
-        </li>
+        {%- endfor %}
       </ul>
     </section>
 
     <section class="sec" id="experience" aria-labelledby="experience-h">
       <h2 id="experience-h">Experience</h2>
+      {%- for e in site.data.experience %}
 
-      <article class="entry">
-        <div class="entry-head">
-          <h3>Research Intern</h3>
-          <span class="when">Jul 2026 &ndash; present</span>
-        </div>
-        <p class="org">Trustworthy and Adversarial Computing Lab, Aalto University, Finland</p>
-        <ul>
-          <li>Adversarial examples for cyber-physical vision systems: attacks realized in the physical world (printed patches, modified objects, AR/VR) rather than purely digital perturbations.</li>
-          <li>Gradient-based optimization of adversarial attacks on deep computer vision models under physical constraints.</li>
-        </ul>
-      </article>
-
-      <article class="entry">
-        <div class="entry-head">
-          <h3>Research Intern</h3>
-          <span class="when">Jul 2025 &ndash; Jul 2026</span>
-        </div>
-        <p class="org">Visual AI System Research team, Nokia Technologies &amp; Aalto University, Finland</p>
-        <ul>
-          <li>Super-resolution as post filter for Versatile Video Coding.</li>
-          <li>Low-rank adaptation for model finetuning.</li>
-          <li>Quantization-aware training and mixed-precision quantization for model compression.</li>
-        </ul>
-      </article>
-
-      <article class="entry">
-        <div class="entry-head">
-          <h3>Algorithm Engineer</h3>
-          <span class="when">May 2024 &ndash; Jun 2025</span>
-        </div>
-        <p class="org">Nordic Inertial, Finland (part-time)</p>
-        <ul>
-          <li>Built machine learning models for zero-velocity detection on IMU sensor data.</li>
-          <li>Implemented sensor-fusion-based headlight leveling control in automotive vehicles.</li>
-        </ul>
-      </article>
-
-      <article class="entry">
-        <div class="entry-head">
-          <h3>Research Assistant</h3>
-          <span class="when">Nov 2023 &ndash; Feb 2024</span>
-        </div>
-        <p class="org">Video Coding for Machines project, Nokia Technologies &amp; Tampere University, Finland</p>
-        <ul>
-          <li>Defined the semantic-segmentation evaluation methodology for Video Coding for Machines (Detectron2 and Mask2Former as task networks), adopted into the MPEG Common Test Conditions used to develop the standard (<a href="#std-1">S1</a>) and published as <a href="/#pub-2">publication&nbsp;2</a>.</li>
-          <li>Evaluated the VCM standard on object detection and tracking using the TVD and SFU-HW datasets.</li>
-        </ul>
-      </article>
-
-      <article class="entry">
-        <div class="entry-head">
-          <h3>Research Assistant</h3>
-          <span class="when">May 2023 &ndash; Sep 2023</span>
-        </div>
-        <p class="org">GaitMaven project for gait analysis, Tampere University, Finland</p>
-        <ul>
-          <li>Performed sensor fusion across GPS-aided IMU, heart rate and spirometer streams from 16 participants, producing the synchronized dataset used for training.</li>
-          <li>Benchmarked recurrent (RNN, LSTM, GRU), convolutional, ResNet, DenseNet and Xception architectures for oxygen-consumption estimation.</li>
-        </ul>
-      </article>
+      {% include entry.html entry=e %}
+      {%- endfor %}
     </section>
 
     <section class="sec" id="education" aria-labelledby="education-h">
       <h2 id="education-h">Education</h2>
+      {%- for e in site.data.education %}
 
-      <article class="entry">
-        <div class="entry-head">
-          <h3>M.Sc., Computing Sciences</h3>
-          <span class="when">Aug 2023 &ndash; Dec 2025</span>
-        </div>
-        <p class="org">Tampere University, Finland</p>
-        <ul>
-          <li>Major in Signal Processing &amp; Machine Learning, minor in Applied Mathematics. GPA 5.00/5.</li>
-          <li>Thesis (5/5), at the <a href="https://www.tuni.fi/en/tau/research/signal-analysis-and-machine-intelligence-sami">Signal Analysis and Machine Intelligence (SAMI) group</a>: <em>Optimizing the Rate-Quality-Task Performance in Learned Image Compression for Machine</em> &mdash; recast joint compression&ndash;segmentation training as constrained optimization over the rate&ndash;quality&ndash;performance trade-off.</li>
-        </ul>
-        <ul class="links" role="list">
-          <li><a class="chip" href="https://trepo.tuni.fi/handle/10024/233128">MSc thesis</a></li>
-        </ul>
-      </article>
-
-      <article class="entry">
-        <div class="entry-head">
-          <h3>B.Sc., Science and Engineering</h3>
-          <span class="when">Aug 2020 &ndash; May 2023</span>
-        </div>
-        <p class="org">Tampere University, Finland</p>
-        <ul>
-          <li>Major in Applied Mathematics, minor in Statistical Data Analysis. GPA 4.61/5.</li>
-          <li>Thesis (5/5): <em>Representation Learning for Candlestick Time-Series Data: A Contrastive Learning Approach</em>.</li>
-        </ul>
-        <ul class="links" role="list">
-          <li><a class="chip" href="https://trepo.tuni.fi/handle/10024/147793">BSc thesis</a></li>
-        </ul>
-      </article>
+      {% include entry.html entry=e %}
+      {%- endfor %}
     </section>
+
+    {%- assign t = site.data.teaching %}
 
     <section class="sec" id="teaching" aria-labelledby="teaching-h">
       <h2 id="teaching-h">Teaching</h2>
       <div class="entry-head">
-        <h3>Teaching Assistant, Tampere University</h3>
-        <span class="when">2022 &ndash; 2025</span>
+        <h3>{{ t.role }}</h3>
+        <span class="when">{{ t.when }}</span>
       </div>
       <ul class="rows courses kv" role="list">
+        {%- for c in t.courses %}
         <li>
-          <span class="code">DATA.ML.300</span>
+          <span class="code">{{ c.code }}</span>
           <span>
-            <span class="course-name">Computer Vision</span>
-            <span class="terms">Spring 2023, Spring 2024, Spring 2025</span>
+            <span class="course-name">{{ c.name }}</span>
+            <span class="terms">{{ c.terms }}</span>
           </span>
         </li>
-        <li>
-          <span class="code">DATA.ML.200</span>
-          <span>
-            <span class="course-name">Pattern Recognition &amp; Machine Learning</span>
-            <span class="terms">Spring 2023, Spring 2024</span>
-          </span>
-        </li>
-        <li>
-          <span class="code">DATA.ML.100</span>
-          <span>
-            <span class="course-name">Introduction to Pattern Recognition &amp; Machine Learning</span>
-            <span class="terms">Autumn 2022</span>
-          </span>
-        </li>
-        <li>
-          <span class="code">DATA.DB.100</span>
-          <span>
-            <span class="course-name">Database Basics</span>
-            <span class="terms">Autumn 2022, Spring 2023</span>
-          </span>
-        </li>
-        <li>
-          <span class="code">COMP.CS.320</span>
-          <span>
-            <span class="course-name">Data Intensive Programming</span>
-            <span class="terms">Autumn 2022</span>
-          </span>
-        </li>
+        {%- endfor %}
       </ul>
     </section>
 
     <section class="sec" id="awards" aria-labelledby="awards-h">
       <h2 id="awards-h">Awards and honours</h2>
       <ul class="rows awards" role="list">
+        {%- for a in site.data.awards %}
         <li>
-          <span class="award-name">Best Student Paper Award, IEEE&nbsp;MMSP&nbsp;2026<span class="detail">For <a href="/#pub-3">CASR</a>, with co-authors &middot; <a href="/papers/casr-award-certificate.jpg">Certificate</a></span></span>
-          <span class="when">2026</span>
+          <span class="award-name">{{ a.name }}{% if a.detail %}<span class="detail">{{ a.detail }}</span>{% endif %}</span>
+          <span class="when">{{ a.when }}</span>
         </li>
-        <li>
-          <span class="award-name">Academic Excellence Award, Tampere University<span class="detail">EUR 7,000</span></span>
-          <span class="when">2021, 2023</span>
-        </li>
-        <li>
-          <span class="award-name">Tuition Fee Scholarship, Tampere University<span class="detail">Full waiver for BSc and MSc</span></span>
-          <span class="when">2020</span>
-        </li>
-        <li>
-          <span class="award-name">Third Prize, National Mathematical Olympiad, Vietnam</span>
-          <span class="when">2020</span>
-        </li>
+        {%- endfor %}
       </ul>
     </section>
 
     <section class="sec" id="skills" aria-labelledby="skills-h">
       <h2 id="skills-h">Technical skills</h2>
-      <ul class="rows kv" role="list">
-        <li>
-          <span class="key">Core</span>
-          <span class="val">Python, PyTorch, C/C++, CUDA, ONNX, OpenCV</span>
-        </li>
-        <li>
-          <span class="key">Data &amp; modelling</span>
-          <span class="val">NumPy, Pandas, scikit-learn, MATLAB, SQL, R</span>
-        </li>
-        <li>
-          <span class="key">Infrastructure</span>
-          <span class="val">Linux/Bash, Slurm, Apptainer, multi-GPU HPC clusters</span>
-        </li>
-      </ul>
+      {% include kv-rows.html rows=site.data.skills %}
     </section>
 
     <section class="sec" id="languages" aria-labelledby="languages-h">
       <h2 id="languages-h">Languages</h2>
-      <ul class="rows kv" role="list">
-        <li>
-          <span class="key">Vietnamese</span>
-          <span class="val">Native speaker</span>
-        </li>
-        <li>
-          <span class="key">English</span>
-          <span class="val">IELTS 6.5 (05/2026)</span>
-        </li>
-      </ul>
+      {% include kv-rows.html rows=site.data.languages %}
     </section>

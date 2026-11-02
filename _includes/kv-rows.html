@@ -1,0 +1,10 @@
+{%- assign k = include.key | default: "key" -%}
+{%- assign v = include.val | default: "val" -%}
+<ul class="rows kv" role="list">
+        {%- for row in include.rows %}
+        <li>
+          <span class="key">{{ row[k] }}</span>
+          <span class="val">{{ row[v] }}</span>
+        </li>
+        {%- endfor %}
+      </ul>
