@@ -1,0 +1,30 @@
+{%- assign p = include.paper -%}
+<li id="pub-{{ p.number }}" value="{{ p.number }}">
+          <p class="pub-title">{{ p.list_title | default: p.title }}</p>
+          <p class="authors">
+            {%- for a in p.authors -%}
+            {%- assign n = a.list_name | default: a.name -%}
+            {%- if a.me %}<span class="me">{{ n }}</span>{% else %}{{ n }}{% endif -%}
+            {%- if a.equal %}&dagger;{% endif -%}
+            {%- unless forloop.last %}, {% endunless -%}
+            {%- endfor -%}
+          </p>
+          {%- if p.list_venue %}
+          <p class="venue">{{ p.list_venue }}{% if p.list_note %} <span class="note">{{ p.list_note }}</span>{% endif %}</p>
+          {%- endif %}
+          <ul class="links" role="list">
+            <li><a class="chip primary" href="{{ p.url }}">Details</a></li>
+            {%- if p.doi %}
+            <li><a class="chip" href="https://doi.org/{{ p.doi }}">DOI</a></li>
+            {%- endif %}
+            {%- for l in p.links %}
+            <li><a class="chip" href="{{ l.url }}">{{ l.label }}</a></li>
+            {%- endfor %}
+            {%- if p.award %}
+            {%- assign award = site.data.awards | where: "key", p.award | first %}
+            {%- if award.badge %}
+            <li><span class="badge">{{ award.badge }}</span></li>
+            {%- endif %}
+            {%- endif %}
+          </ul>
+        </li>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include head.html css="paper" %}
+</head>
+<body>
+<div class="sheet">
+
+  {% include nav.html brand=true %}
+
+  <main>
+    <header>
+      <h1>{{ page.title }}</h1>
+
+      <p class="authors">
+        {%- for a in page.authors %}
+        {% if a.me %}<span class="me">{{ a.name }}</span>{% else %}{{ a.name }}{% endif -%}
+        {%- if a.equal %}{% if a.sup %}<sup>&dagger;,{{ a.sup }}</sup>{% else %}<sup>&dagger;</sup>{% endif %}{% elsif a.sup %}<sup>{{ a.sup }}</sup>{% endif -%}
+        {%- unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      </p>
+      {%- if page.affiliations %}
+
+      <p class="affil">{{ page.affiliations }}</p>
+      {%- endif %}
+      {%- if page.corresponding %}
+
+      <p class="corr">{{ page.corresponding }}</p>
+      {%- endif %}
+      {%- if page.venue %}
+
+      <p class="venue">{{ page.venue }}</p>
+      {%- endif %}
+      {%- if page.award %}
+      {%- assign award = site.data.awards | where: "key", page.award | first %}
+
+      <p class="award"><strong>{{ award.badge }}.</strong>{% if award.certificate %} <a href="{{ award.certificate }}">View the certificate</a>{% endif %}</p>
+      {%- elsif page.page_note %}
+
+      <p class="award candidate"><strong>{{ page.page_note }}</strong></p>
+      {%- endif %}
+      {%- if page.doi %}
+
+      <p class="doi">DOI: <a href="https://doi.org/{{ page.doi }}">{{ page.doi }}</a></p>
+      {%- endif %}
+    </header>
+    {%- if page.actions %}
+
+    <div class="actions">
+      {%- for b in page.actions %}
+      <a class="btn" href="{{ b.url }}">{{ b.label }}</a>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+
+    <hr>
+
+    <h2>Abstract</h2>
+    <p class="abstract">{{ page.abstract }}</p>
+    {%- if page.index_terms %}
+
+    <p class="terms"><strong>Index terms:</strong> {{ page.index_terms }}</p>
+    {%- endif %}
+
+{{ content }}
+    <h2>BibTeX</h2>
+    <div class="bibwrap">
+<pre id="bibtex" tabindex="0" role="region" aria-label="BibTeX entry">{{ page.bibtex }}</pre>
+    </div>
+  </main>
+  {%- if page.footer %}
+
+  <footer>
+    {%- for f in page.footer %}
+    <p>{{ f }}</p>
+    {%- endfor %}
+  </footer>
+  {%- endif %}
+
+</div>
+
+<div class="site-foot">
+  {% include footer.html %}
+</div>
+
+<script src="/assets/js/copy-bibtex.js"></script>
+</body>
+</html>

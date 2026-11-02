@@ -23,6 +23,26 @@ SENTINELS = {  # file: (yaml snippet appended, marker, section id, page)
 }
 
 
+# A new paper with no `group:` (falls back to Peer-reviewed), a DOI, an award
+# reference and the DOI switch turned on.
+SENTINEL_PAPER = """---
+doi_redirect: https://doi.org/10.0000/sentinel
+number: 99
+title: SENTINEL paper
+description: d
+authors:
+  - name: X
+    me: true
+doi: 10.0000/sentinel
+award: mmsp2026-best-student-paper
+abstract: a
+bibtex: "@misc{s}"
+citation:
+  - [citation_title, SENTINEL paper]
+---
+"""
+
+
 @pytest.fixture(scope="session")
 def edited_site(tmp_path_factory):
     src = copy_repo(tmp_path_factory.mktemp("edited") / "site")
@@ -30,6 +50,8 @@ def edited_site(tmp_path_factory):
         path = src / "_data" / name
         text = path.read_text(encoding="utf-8")
         path.write_text(text + ("" if text.endswith("\n") else "\n") + snippet, encoding="utf-8")
+    (src / "_papers").mkdir(exist_ok=True)
+    (src / "_papers" / "zz-sentinel.md").write_text(SENTINEL_PAPER, encoding="utf-8")
     return build(src)
 
 
@@ -37,3 +59,19 @@ def edited_site(tmp_path_factory):
 def test_data_entry_renders_in_its_section(edited_site, file):
     _, marker, sec, url = SENTINELS[file]
     assert marker in soup(page_path(edited_site, url)).find("section", id=sec).text
+
+
+def test_new_paper_file_renders_everywhere(edited_site):
+    home = soup(page_path(edited_site, "/"))
+    entry = home.select_one("li#pub-99")
+    assert entry is not None
+    assert entry.find_parent("ol") is home.select_one("li#pub-3").find_parent("ol")
+    assert [a["href"] for a in entry.select("a.chip")][1] == "https://doi.org/10.0000/sentinel"
+    assert entry.select_one("span.badge").text == "Best Student Paper Award"
+
+    page = soup(page_path(edited_site, "/papers/zz-sentinel.html"))
+    metas = page.head.find_all("meta")
+    assert metas[0].get("charset") == "utf-8"
+    assert metas[1].get("http-equiv") == "refresh"
+    assert metas[1]["content"] == "0; url=https://doi.org/10.0000/sentinel"
+    assert page.select_one("p.award strong").text == "Best Student Paper Award."

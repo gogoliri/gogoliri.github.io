@@ -19,53 +19,30 @@ og_image: https://khoaphamdinh.com/avatar.jpg
       {% include kv-rows.html rows=site.data.news key="date" val="text" %}
     </section>
 
+    {%- assign papers = site.papers | sort: "number" | reverse %}
+    {%- assign peer = papers | where_exp: "p", "p.group != 'preprint'" %}
+    {%- assign preprints = papers | where: "group", "preprint" %}
+
     <section class="sec" id="publications" aria-labelledby="publications-h">
       <h2 id="publications-h">Publications</h2>
+      {%- if peer.size > 0 %}
 
       <h3 class="sub">Peer-reviewed</h3>
       <ol class="pubs">
-        <li id="pub-3" value="3">
-          <p class="pub-title">CASR: Content-Adaptive Neural Super-Resolution Post-Filter for Versatile Video Coding via Low-Rank Overfitting</p>
-          <p class="authors"><span class="me">Khoa Pham-Dinh</span>, Francesco Cricri, Maria Santamaria, Honglei Zhang, Hamed Rezazadegan Tavakoli, Moncef Gabbouj, Juho Kannala, Miska M. Hannuksela</p>
-          <p class="venue"><em>IEEE International Workshop on Multimedia Signal Processing (MMSP)</em>, Istanbul, Turkey, 22&ndash;24 September 2026.</p>
-          <ul class="links" role="list">
-            <li><a class="chip primary" href="/papers/casr.html">Details</a></li>
-            <li><a class="chip" href="https://arxiv.org/abs/2609.37328">arXiv</a></li>
-            <li><span class="badge">Best Student Paper Award</span></li>
-          </ul>
-        </li>
-        <li id="pub-2" value="2">
-          <p class="pub-title">Evaluating the Emerging MPEG Video Coding for Machines in Semantic Segmentation</p>
-          <p class="authors"><span class="me">Khoa Pham-Dinh</span>, Farhad Pakdaman, Honglei Zhang, Hamed Rezazadegan Tavakoli, Nam Le, Jukka Ahonen, Moncef Gabbouj</p>
-          <p class="venue"><em>IEEE International Symposium on Multimedia (ISM)</em>, 2025, pp. 141&ndash;148. <span class="note">Candidate for Best Paper Award.</span></p>
-          <ul class="links" role="list">
-            <li><a class="chip primary" href="/papers/vcm-segmentation.html">Details</a></li>
-            <li><a class="chip" href="https://doi.org/10.1109/ISM66958.2025.00038">DOI</a></li>
-            <li><a class="chip" href="/cv/#std-1">Contribution m67677</a></li>
-          </ul>
-        </li>
-        <li id="pub-1" value="1">
-          <p class="pub-title">Estimating Intra- and Inter-Subject Oxygen Consumption in Outdoor Human Gait Using Multiple Neural Network Approaches</p>
-          <p class="authors">Philipp M&uuml;ller&dagger;, <span class="me">Khoa Pham-Dinh</span>&dagger;, Huy Trinh, Anton Rauhameri, Neil J. Cronin</p>
-          <p class="venue"><em>PLOS ONE</em> 19(9):e0303317, 2024. &dagger;&nbsp;equal contribution.</p>
-          <ul class="links" role="list">
-            <li><a class="chip primary" href="/papers/oxygen-gait.html">Details</a></li>
-            <li><a class="chip" href="https://doi.org/10.1371/journal.pone.0303317">DOI</a></li>
-          </ul>
-        </li>
+        {%- for paper in peer %}
+        {% include pub-entry.html paper=paper %}
+        {%- endfor %}
       </ol>
+      {%- endif %}
+      {%- if preprints.size > 0 %}
 
       <h3 class="sub">Preprint</h3>
       <ol class="pubs">
-        <li id="pub-4" value="4">
-          <p class="pub-title">You&rsquo;ve Seen Enough: Quality-Constrained Image Coding For Machines</p>
-          <p class="authors"><span class="me">Khoa Pham-Dinh</span>, Sanaz Nami, Hamed Rezazadegan Tavakoli, Moncef Gabbouj, Farhad Pakdaman</p>
-          <ul class="links" role="list">
-            <li><a class="chip primary" href="/papers/quality-constrained-coding.html">Details</a></li>
-            <li><a class="chip" href="https://arxiv.org/abs/2609.25108">arXiv</a></li>
-          </ul>
-        </li>
+        {%- for paper in preprints %}
+        {% include pub-entry.html paper=paper %}
+        {%- endfor %}
       </ol>
+      {%- endif %}
     </section>
 
 <script type="application/ld+json">

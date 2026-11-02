@@ -21,3 +21,18 @@ kramdown:
 
 liquid:
   strict_filters: true
+
+# One file per paper in _papers/; each renders /papers/<file name>.html and its
+# homepage entry.
+collections:
+  papers:
+    output: true
+    permalink: /papers/:name.html
+
+defaults:
+  - scope:
+      path: ""
+      type: papers
+    values:
+      layout: paper
+      og_type: article
