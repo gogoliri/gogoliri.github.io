@@ -1,0 +1,9 @@
+_site/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/
+.superpowers/
+docs/
+__pycache__/
+.pytest_cache/

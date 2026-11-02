@@ -1,0 +1,23 @@
+title: Khoa Pham-Dinh
+url: https://khoaphamdinh.com
+baseurl: ""
+
+# GitHub builds in UTC; posts dated "today" in Helsinki must not count as future.
+timezone: Europe/Helsinki
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - scripts
+  - tests
+  - docs
+  - CLAUDE.md
+  - README.md
+  - node_modules
+
+kramdown:
+  auto_ids: false
+
+liquid:
+  strict_filters: true
