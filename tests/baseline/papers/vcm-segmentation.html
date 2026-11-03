@@ -2,28 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-
-<!--
-  ================= THE DOI SWITCH =================
-  The CV links this paper by its DOI. This page is the stable khoaphamdinh.com
-  landing page for it, linked from the homepage publication list. Today that URL
-  shows this page: abstract, BibTeX, and a link out to the published paper.
-
-  The real DOI is already filled in on the ONE line directly below. Uncommenting
-  it - by deleting the comment opener at the start of the line and the comment
-  closer at the end of the line - turns this stable URL into an instant redirect
-  to the publisher page on IEEE Xplore, in every browser, with no JavaScript
-  involved. Save, commit, push.
-
-  It is left commented on purpose: this page carries the standardization-adoption
-  note and the award note, which the publisher page does not, and it keeps the
-  abstract and BibTeX readable without a publisher paywall or cookie wall.
-  ==================================================
--->
-<!-- <meta http-equiv="refresh" content="0; url=https://doi.org/10.1109/ISM66958.2025.00038"> -->
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Evaluating the Emerging MPEG Video Coding for Machines in Semantic Segmentation — Khoa Pham-Dinh</title>
+<meta name="description" content="An evaluation methodology for MPEG Video Coding for Machines on semantic segmentation with the PandaSet dataset, benchmarked against VVC and HEVC. IEEE ISM 2025.">
+<meta name="author" content="Khoa Pham-Dinh">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F5EFE1">
 <link rel="canonical" href="https://khoaphamdinh.com/papers/vcm-segmentation.html">
 
 <!-- Google Scholar indexing -->
@@ -42,206 +26,28 @@
 <meta name="citation_lastpage" content="148">
 <meta name="citation_doi" content="10.1109/ISM66958.2025.00038">
 
-<!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="Evaluating the Emerging MPEG Video Coding for Machines in Semantic Segmentation">
 <meta property="og:description" content="An evaluation methodology for MPEG Video Coding for Machines on semantic segmentation with the PandaSet dataset, benchmarked against VVC and HEVC. IEEE ISM 2025.">
 <meta property="og:url" content="https://khoaphamdinh.com/papers/vcm-segmentation.html">
 
-<style>
-  :root {
-    --bg: #F5EFE1;          /* warm cream */
-    --ink: #1E2A1A;         /* soft near-black, green-tinted */
-    --accent: #4B6F44;      /* Green Satin */
-    --panel: #EDE5D2;       /* slightly deeper cream for blocks */
-    --rule: #D8CEB6;        /* hairline */
-    --muted: #4A5342;       /* secondary text */
-    --rule-strong: #8E8468; /* 3.24:1 on --bg, for control boundaries */
-  }
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%23F5EFE1'/%3E%3Cpath%20d='M9%206h3.6v8.4L20.2%206h4.4l-8.2%209.4L25.2%2026h-4.6l-6.4-8.1-1.6%201.8V26H9z'%20fill='%234B6F44'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/paper.css">
 
-  *, *::before, *::after { box-sizing: border-box; }
-
-  html {
-    background: var(--bg);
-    -webkit-text-size-adjust: 100%;
-  }
-
-  body {
-    margin: 0;
-    padding: 2.5rem 1rem 3.5rem;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "Avenir", "Afacad", -apple-system, "Segoe UI", sans-serif;
-    font-size: 1.0625rem;
-    line-height: 1.65;
-    overflow-wrap: break-word;
-  }
-
-  .sheet {
-    max-width: 44rem;
-    margin: 0 auto;
-  }
-
-  a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-  a:hover { text-decoration: underline; }
-
-  /* In-prose links need a non-colour cue: accent on muted body text is 1.40:1. */
-  p a {
-    text-decoration: underline;
-    text-underline-offset: 0.15em;
-    text-decoration-thickness: from-font;
-  }
-
-  a:focus-visible,
-  button:focus-visible,
-  pre:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
-
-  .back {
-    display: inline-block;
-    margin-bottom: 2.25rem;
-    font-size: 0.9375rem;
-    letter-spacing: 0.01em;
-  }
-
-  h1 {
-    font-size: clamp(1.5rem, 1.1rem + 1.9vw, 2.125rem);
-    font-weight: 500;
-    line-height: 1.25;
-    margin: 0 0 1rem;
-    letter-spacing: -0.01em;
-  }
-
-  h2 {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--accent);
-    margin: 2.75rem 0 0.75rem;
-  }
-
-  p { margin: 0 0 1rem; }
-
-  .authors {
-    margin: 0 0 0.5rem;
-    line-height: 1.8;
-  }
-  .authors .me { font-weight: 600; }
-  .authors sup { font-size: 0.72em; }
-
-  .affil,
-  .venue,
-  .award,
-  .doi {
-    font-size: 0.9375rem;
-    color: var(--muted);
-    margin: 0 0 0.35rem;
-  }
-  .affil sup { font-size: 0.8em; }
-  .venue { margin-top: 0.75rem; }
-  .venue em { font-style: normal; color: var(--ink); }
-  .award strong { font-weight: 600; color: var(--ink); }
-
-  hr {
-    border: 0;
-    border-top: 1px solid var(--rule);
-    margin: 2rem 0 0;
-  }
-
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem 1rem;
-    align-items: center;
-    margin: 1.75rem 0 0;
-  }
-
-  .btn {
-    display: inline-block;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 0.7rem 1.35rem;
-    border-radius: 3px;
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-  }
-  .btn:hover {
-    background: #3E5C38;
-    color: var(--bg);
-    text-decoration: none;
-  }
-
-
-  /* Running prose is justified; hyphenation keeps the rivers out. */
-  main > p:not(.terms),
-  footer p {
-    text-align: justify;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-  }
-
-  .terms {
-    font-size: 0.9375rem;
-    color: var(--muted);
-  }
-
-  .bibwrap { position: relative; }
-
-  pre {
-    background: var(--panel);
-    border: 1px solid var(--rule);
-    border-radius: 3px;
-    padding: 1.1rem 1.15rem;
-    margin: 0;
-    overflow-x: auto;
-    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace;
-    font-size: 0.8125rem;
-    line-height: 1.6;
-    tab-size: 2;
-  }
-
-  .copy {
-    font: inherit;
-    font-size: 0.8125rem;
-    background: transparent;
-    color: var(--accent);
-    border: 1px solid var(--rule-strong);
-    border-radius: 3px;
-    padding: 0.35rem 0.75rem;
-    margin-bottom: 0.6rem;
-    cursor: pointer;
-  }
-  .copy:hover { background: var(--panel); }
-
-  footer {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--rule);
-    font-size: 0.8125rem;
-    line-height: 1.6;
-    color: var(--muted);
-  }
-  footer p { margin: 0 0 0.75rem; }
-  footer p:last-child { margin-bottom: 0; }
-
-  @media (max-width: 400px) {
-    body { padding: 2rem 1rem 3rem; font-size: 1rem; }
-    pre { font-size: 0.75rem; }
-  }
-</style>
 </head>
 <body>
 <div class="sheet">
 
-  <a class="back" href="../">&#8592; khoaphamdinh.com</a>
+  <nav class="site-nav" aria-label="Site">
+  <a class="brand" href="/">Khoa Pham-Dinh</a>
+  <ul role="list">
+    <li><a href="/">Home</a></li>
+    <li><a href="/cv/">CV</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+</nav>
+
 
   <main>
     <header>
@@ -257,20 +63,13 @@
         Moncef Gabbouj<sup>1</sup>
       </p>
 
-      <p class="affil">
-        <sup>1</sup>Dept. of Computing Sciences, Tampere University &nbsp;&middot;&nbsp;
-        <sup>2</sup>Nokia Technologies
-      </p>
+      <p class="affil"><sup>1</sup>Dept. of Computing Sciences, Tampere University &nbsp;&middot;&nbsp; <sup>2</sup>Nokia Technologies</p>
 
-      <p class="venue">
-        <em>2025 IEEE International Symposium on Multimedia (ISM). Naples, Italy, 8&ndash;10 December 2025, pp. 141&ndash;148.</em>
-      </p>
+      <p class="venue"><em>2025 IEEE International Symposium on Multimedia (ISM). Naples, Italy, 8&ndash;10 December 2025, pp. 141&ndash;148.</em></p>
 
-      <p class="award"><strong>Candidate for the Best Paper Award.</strong></p>
+      <p class="award candidate"><strong>Candidate for the Best Paper Award.</strong></p>
 
-      <p class="doi">
-        DOI: <a href="https://doi.org/10.1109/ISM66958.2025.00038">10.1109/ISM66958.2025.00038</a>
-      </p>
+      <p class="doi">DOI: <a href="https://doi.org/10.1109/ISM66958.2025.00038">10.1109/ISM66958.2025.00038</a></p>
     </header>
 
     <div class="actions">
@@ -284,8 +83,9 @@
 
     <p class="terms"><strong>Index terms:</strong> video compression, video coding for machines, semantic segmentation, autonomous driving, computer vision</p>
 
-    <h2>Standardization impact</h2>
-    <p>The evaluation methodology from this work was adopted into the MPEG Common Test Conditions used to develop the Video Coding for Machines standard (MPEG contribution <a href="../#std-1">m67677</a>, ISO/IEC JTC 1/SC 29/WG 4, April 2024).</p>
+<h2>Standardization impact</h2>
+
+<p>The evaluation methodology from this work was adopted into the MPEG Common Test Conditions used to develop the Video Coding for Machines standard (MPEG contribution <a href="/#std-1">m67677</a>, ISO/IEC JTC 1/SC 29/WG 4, April 2024).</p>
 
     <h2>BibTeX</h2>
     <div class="bibwrap">
@@ -313,33 +113,14 @@
 
 </div>
 
-<script>
-  // Progressive enhancement only: the BibTeX above is fully readable and
-  // selectable without JavaScript, so the button is added only if JS runs.
-  (function () {
-    var pre = document.getElementById('bibtex');
-    if (!pre || !pre.parentNode) return;
-    // No Clipboard API (file://, plain http, older browser) means no button,
-    // rather than a button that looks live and does nothing.
-    if (!navigator.clipboard || !navigator.clipboard.writeText) return;
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'copy';
-    btn.textContent = 'Copy BibTeX';
-    var reset = function () {
-      setTimeout(function () { btn.textContent = 'Copy BibTeX'; }, 2000);
-    };
-    btn.addEventListener('click', function () {
-      navigator.clipboard.writeText(pre.textContent).then(function () {
-        btn.textContent = 'Copied';
-        reset();
-      }, function () {
-        btn.textContent = 'Copy failed — select the text instead';
-        reset();
-      });
-    });
-    pre.parentNode.insertBefore(btn, pre);
-  })();
-</script>
+<div class="site-foot">
+  <footer class="foot">
+    <p>Khoa Pham-Dinh &mdash; <a href="mailto:khoa.a.phamdinh@gmail.com">khoa.a.phamdinh@gmail.com</a> &mdash; Helsinki, Finland</p>
+    <p>Last updated November 2026.</p>
+  </footer>
+
+</div>
+
+<script src="/assets/js/copy-bibtex.js"></script>
 </body>
 </html>

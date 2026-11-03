@@ -1,7 +1,6 @@
-"""Home and CV pages: every section renders exactly as it did on the old
-single page (Languages and Technical skills are gone from the CV), the
-shared nav marks the current page, and styles come only from the shared
-stylesheets."""
+"""Home and CV pages: every section renders exactly as in the frozen baseline,
+the CV rail lists the CV's sections, the shared nav marks the current page,
+and styles come only from the shared stylesheets."""
 
 import json
 import re
@@ -14,36 +13,26 @@ from helpers import BASELINE, REPO, norm, page_path, soup
 HOME = ["about", "news", "publications", "standardization"]
 CV = ["education", "experience", "teaching", "awards"]
 WHERE = {**{s: "/" for s in HOME}, **{s: "/cv/" for s in CV}}
-# Rows added since the baseline was frozen, as (section, position, row text start).
-# Each must sit at its position; it is then dropped before comparing with the baseline.
-ADDED = [("awards", 1, "Candidate for Best Paper Award, IEEE\xa0ISM\xa02025")]
+REFREEZE = "if the change is intended, run scripts/refreeze-baseline.sh and review git diff tests/baseline"
 
 
 @pytest.mark.parametrize("sec", HOME + CV)
 def test_section_matches_baseline(site, sec):
-    new = soup(page_path(site, WHERE[sec])).find("section", id=sec)
-    old = soup(BASELINE / "index.html").find("section", id=sec)
-    assert new is not None, f"section #{sec} missing from {WHERE[sec]}"
-    for s, pos, start in ADDED:
-        if s == sec:
-            rows = new.select("ul > li")
-            assert rows[pos].get_text().strip().startswith(start), f"{start!r} not row {pos} of #{sec}"
-            rows[pos].decompose()
-    assert norm(new, WHERE[sec]) == norm(old, "/")
-
-
-@pytest.mark.parametrize("sec", ["languages", "skills"])
-def test_section_removed(site, sec):
-    assert not (REPO / "_data" / f"{sec}.yml").exists()
-    for url in ["/", "/cv/"]:
-        s = soup(page_path(site, url))
-        assert s.find(id=sec) is None, url
-        assert all(a["href"] != f"#{sec}" for a in s.select("nav.toc a")), url
+    url = WHERE[sec]
+    new = soup(page_path(site, url)).find("section", id=sec)
+    old = soup(page_path(BASELINE, url)).find("section", id=sec)
+    assert new is not None, f"section #{sec} missing from {url}"
+    assert norm(new, url) == norm(old, url), f"#{sec} on {url} differs from the baseline; {REFREEZE}"
 
 
 def test_section_order(site):
     for url, ids in [("/", HOME), ("/cv/", CV)]:
         assert [s["id"] for s in soup(page_path(site, url)).select("main section.sec")] == ids
+
+
+def test_cv_rail_lists_cv_sections(site):
+    s = soup(page_path(site, "/cv/"))
+    assert [a["href"] for a in s.select("nav.toc a")] == [f"#{sec}" for sec in CV]
 
 
 @pytest.mark.parametrize("url,key", [("/", "Home"), ("/cv/", "CV"), ("/blog/", "Blog")])

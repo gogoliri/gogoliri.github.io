@@ -1,6 +1,6 @@
 """Shared helpers for the site tests: build with Jekyll, locate pages, and
-reduce HTML elements to a canonical string so a regenerated page can be
-compared with the frozen copy of today's hand-written one."""
+reduce HTML elements to a canonical string so a built page can be compared
+with its frozen copy in tests/baseline/ (scripts/refreeze-baseline.sh)."""
 
 import copy
 import html
@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup, Comment, NavigableString, Tag
 
 REPO = Path(__file__).resolve().parent.parent
 BASELINE = REPO / "tests" / "baseline"
+# The last hand-written commit: the /p/ stubs and CNAME must stay byte-identical to it.
 BASE_COMMIT = "6558488"
 ORIGIN = "https://khoaphamdinh.com"
 

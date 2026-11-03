@@ -1,5 +1,5 @@
 """Paper pages are generated from one _papers/<slug>.md file each, and must
-match today's hand-written pages: same Scholar and Open Graph tags, same
+match their frozen baseline copies: same Scholar and Open Graph tags, same
 visible content, byte-exact BibTeX, plus the shared nav and stylesheets."""
 
 import re
@@ -9,11 +9,13 @@ import yaml
 
 from helpers import BASELINE, REPO, norm, soup
 
-SLUGS = ["casr", "oxygen-gait", "quality-constrained-coding", "vcm-segmentation"]
+SLUGS = sorted(f.stem for f in (REPO / "_papers").glob("*.md"))
 
 
 def old_new(site, slug):
-    return soup(BASELINE / "papers" / f"{slug}.html"), soup(site / "papers" / f"{slug}.html")
+    old = BASELINE / "papers" / f"{slug}.html"
+    assert old.is_file(), f"no baseline for {slug}: run scripts/refreeze-baseline.sh"
+    return soup(old), soup(site / "papers" / f"{slug}.html")
 
 
 @pytest.mark.parametrize("slug", SLUGS)
@@ -37,8 +39,6 @@ def test_paper_head_matches_baseline(site, slug):
 @pytest.mark.parametrize("slug", SLUGS)
 def test_paper_main_and_footer_match_baseline(site, slug):
     old, new = old_new(site, slug)
-    if slug == "vcm-segmentation":
-        old.select_one("p.award")["class"] = ["award", "candidate"]
     url = f"/papers/{slug}.html"
     assert norm(new.main, url) == norm(old.main, url)
     of, nf = old.select_one(".sheet > footer"), new.select_one(".sheet > footer")
