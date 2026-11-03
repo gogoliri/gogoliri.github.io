@@ -1,6 +1,7 @@
 """Home and CV pages: every section renders exactly as it did on the old
-single page (Languages is gone from the CV), the shared nav marks the current page, and styles come only
-from the shared stylesheets."""
+single page (Languages and Technical skills are gone from the CV), the
+shared nav marks the current page, and styles come only from the shared
+stylesheets."""
 
 import json
 import re
@@ -11,8 +12,11 @@ import yaml
 from helpers import BASELINE, REPO, norm, page_path, soup
 
 HOME = ["about", "news", "publications", "standardization"]
-CV = ["experience", "education", "teaching", "awards", "skills"]
+CV = ["education", "experience", "teaching", "awards"]
 WHERE = {**{s: "/" for s in HOME}, **{s: "/cv/" for s in CV}}
+# Rows added since the baseline was frozen, as (section, position, row text start).
+# Each must sit at its position; it is then dropped before comparing with the baseline.
+ADDED = [("awards", 1, "Candidate for Best Paper Award, IEEE\xa0ISM\xa02025")]
 
 
 @pytest.mark.parametrize("sec", HOME + CV)
@@ -20,15 +24,21 @@ def test_section_matches_baseline(site, sec):
     new = soup(page_path(site, WHERE[sec])).find("section", id=sec)
     old = soup(BASELINE / "index.html").find("section", id=sec)
     assert new is not None, f"section #{sec} missing from {WHERE[sec]}"
+    for s, pos, start in ADDED:
+        if s == sec:
+            rows = new.select("ul > li")
+            assert rows[pos].get_text().strip().startswith(start), f"{start!r} not row {pos} of #{sec}"
+            rows[pos].decompose()
     assert norm(new, WHERE[sec]) == norm(old, "/")
 
 
-def test_languages_removed(site):
-    assert not (REPO / "_data" / "languages.yml").exists()
+@pytest.mark.parametrize("sec", ["languages", "skills"])
+def test_section_removed(site, sec):
+    assert not (REPO / "_data" / f"{sec}.yml").exists()
     for url in ["/", "/cv/"]:
         s = soup(page_path(site, url))
-        assert s.find(id="languages") is None, url
-        assert all(a["href"] != "#languages" for a in s.select("nav.toc a")), url
+        assert s.find(id=sec) is None, url
+        assert all(a["href"] != f"#{sec}" for a in s.select("nav.toc a")), url
 
 
 def test_section_order(site):

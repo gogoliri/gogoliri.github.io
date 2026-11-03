@@ -21,7 +21,6 @@ SENTINELS = {  # file: (yaml snippet appended, marker, section id, page)
                      "SENTINEL-teach", "teaching", "/cv/"),
     "awards.yml": ('- key: sentinel\n  name: "SENTINEL-award"\n  when: "2099"\n',
                    "SENTINEL-award", "awards", "/cv/"),
-    "skills.yml": ('- key: "k"\n  val: "SENTINEL-skill"\n', "SENTINEL-skill", "skills", "/cv/"),
 }
 
 

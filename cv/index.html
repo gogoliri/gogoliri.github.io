@@ -3,29 +3,27 @@ layout: default
 title: CV
 nav_key: cv
 toc:
-  - id: experience
-    label: Experience
   - id: education
     label: Education
+  - id: experience
+    label: Experience
   - id: teaching
     label: Teaching
   - id: awards
     label: Awards
-  - id: skills
-    label: Technical skills
 ---
 
-    <section class="sec" id="experience" aria-labelledby="experience-h">
-      <h2 id="experience-h">Experience</h2>
-      {%- for e in site.data.experience %}
+    <section class="sec" id="education" aria-labelledby="education-h">
+      <h2 id="education-h">Education</h2>
+      {%- for e in site.data.education %}
 
       {% include entry.html entry=e %}
       {%- endfor %}
     </section>
 
-    <section class="sec" id="education" aria-labelledby="education-h">
-      <h2 id="education-h">Education</h2>
-      {%- for e in site.data.education %}
+    <section class="sec" id="experience" aria-labelledby="experience-h">
+      <h2 id="experience-h">Experience</h2>
+      {%- for e in site.data.experience %}
 
       {% include entry.html entry=e %}
       {%- endfor %}
@@ -62,10 +60,5 @@ toc:
         </li>
         {%- endfor %}
       </ul>
-    </section>
-
-    <section class="sec" id="skills" aria-labelledby="skills-h">
-      <h2 id="skills-h">Technical skills</h2>
-      {% include kv-rows.html rows=site.data.skills %}
     </section>
 

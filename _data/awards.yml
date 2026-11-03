@@ -12,6 +12,13 @@
   badge: Best Student Paper Award
   certificate: /papers/casr-award-certificate.jpg
 
+# A candidacy: a CV row only. No badge, and the paper does not name it with
+# `award:`; its list_note / page_note already say "Candidate".
+- key: ism2025-best-paper-candidate
+  name: Candidate for Best Paper Award, IEEE&nbsp;ISM&nbsp;2025
+  detail: 'For <a href="/#pub-2">publication&nbsp;2</a>, with co-authors'
+  when: "2025"
+
 - key: tuni-academic-excellence
   name: Academic Excellence Award, Tampere University
   detail: EUR 7,000
