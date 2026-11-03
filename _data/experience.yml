@@ -25,7 +25,7 @@
   when: Nov 2023 &ndash; Feb 2024
   org: Video Coding for Machines project, Nokia Technologies &amp; Tampere University, Finland
   bullets:
-    - 'Defined the semantic-segmentation evaluation methodology for Video Coding for Machines (Detectron2 and Mask2Former as task networks), adopted into the MPEG Common Test Conditions used to develop the standard (<a href="#std-1">S1</a>) and published as <a href="/#pub-2">publication&nbsp;2</a>.'
+    - 'Defined the semantic-segmentation evaluation methodology for Video Coding for Machines (Detectron2 and Mask2Former as task networks), adopted into the MPEG Common Test Conditions used to develop the standard (<a href="/#std-1">S1</a>) and published as <a href="/#pub-2">publication&nbsp;2</a>.'
     - Evaluated the VCM standard on object detection and tracking using the TVD and SFU-HW datasets.
 
 - title: Research Assistant

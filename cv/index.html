@@ -3,8 +3,6 @@ layout: default
 title: CV
 nav_key: cv
 toc:
-  - id: standardization
-    label: Standardization
   - id: experience
     label: Experience
   - id: education
@@ -15,24 +13,7 @@ toc:
     label: Awards
   - id: skills
     label: Technical skills
-  - id: languages
-    label: Languages
 ---
-
-    <section class="sec" id="standardization" aria-labelledby="standardization-h">
-      <h2 id="standardization-h">Standardization contributions</h2>
-      <ul class="std" role="list">
-        {%- for s in site.data.standardization %}
-        <li id="{{ s.id }}">
-          <span class="sid">{{ s.label }}</span>
-          <div>
-            <p class="pub-title">{{ s.title }}</p>
-            <p class="venue">{{ s.venue }}</p>
-          </div>
-        </li>
-        {%- endfor %}
-      </ul>
-    </section>
 
     <section class="sec" id="experience" aria-labelledby="experience-h">
       <h2 id="experience-h">Experience</h2>
@@ -88,7 +69,3 @@ toc:
       {% include kv-rows.html rows=site.data.skills %}
     </section>
 
-    <section class="sec" id="languages" aria-labelledby="languages-h">
-      <h2 id="languages-h">Languages</h2>
-      {% include kv-rows.html rows=site.data.languages %}
-    </section>

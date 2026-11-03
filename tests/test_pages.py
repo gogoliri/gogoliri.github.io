@@ -1,5 +1,5 @@
 """Home and CV pages: every section renders exactly as it did on the old
-single page, the shared nav marks the current page, and styles come only
+single page (Languages is gone from the CV), the shared nav marks the current page, and styles come only
 from the shared stylesheets."""
 
 import json
@@ -10,8 +10,8 @@ import yaml
 
 from helpers import BASELINE, REPO, norm, page_path, soup
 
-HOME = ["about", "news", "publications"]
-CV = ["standardization", "experience", "education", "teaching", "awards", "skills", "languages"]
+HOME = ["about", "news", "publications", "standardization"]
+CV = ["experience", "education", "teaching", "awards", "skills"]
 WHERE = {**{s: "/" for s in HOME}, **{s: "/cv/" for s in CV}}
 
 
@@ -21,6 +21,14 @@ def test_section_matches_baseline(site, sec):
     old = soup(BASELINE / "index.html").find("section", id=sec)
     assert new is not None, f"section #{sec} missing from {WHERE[sec]}"
     assert norm(new, WHERE[sec]) == norm(old, "/")
+
+
+def test_languages_removed(site):
+    assert not (REPO / "_data" / "languages.yml").exists()
+    for url in ["/", "/cv/"]:
+        s = soup(page_path(site, url))
+        assert s.find(id="languages") is None, url
+        assert all(a["href"] != "#languages" for a in s.select("nav.toc a")), url
 
 
 def test_section_order(site):

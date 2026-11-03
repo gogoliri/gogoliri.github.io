@@ -45,6 +45,21 @@ og_image: https://khoaphamdinh.com/avatar.jpg
       {%- endif %}
     </section>
 
+    <section class="sec" id="standardization" aria-labelledby="standardization-h">
+      <h2 id="standardization-h">Standardization contributions</h2>
+      <ul class="std" role="list">
+        {%- for s in site.data.standardization %}
+        <li id="{{ s.id }}">
+          <span class="sid">{{ s.label }}</span>
+          <div>
+            <p class="pub-title">{{ s.title }}</p>
+            <p class="venue">{{ s.venue }}</p>
+          </div>
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

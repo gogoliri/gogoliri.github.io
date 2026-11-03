@@ -12,7 +12,7 @@ from helpers import build, copy_repo, page_path, soup
 SENTINELS = {  # file: (yaml snippet appended, marker, section id, page)
     "news.yml": ('- date: "Jan 2099"\n  text: "SENTINEL-news"\n', "SENTINEL-news", "news", "/"),
     "standardization.yml": ('- id: std-99\n  label: "S99."\n  title: "SENTINEL-std"\n  venue: "v"\n',
-                            "SENTINEL-std", "standardization", "/cv/"),
+                            "SENTINEL-std", "standardization", "/"),
     "experience.yml": ('- title: "SENTINEL-exp"\n  when: "w"\n  org: "o"\n  bullets: ["b"]\n',
                        "SENTINEL-exp", "experience", "/cv/"),
     "education.yml": ('- title: "SENTINEL-edu"\n  when: "w"\n  org: "o"\n  bullets: ["b"]\n',
@@ -22,7 +22,6 @@ SENTINELS = {  # file: (yaml snippet appended, marker, section id, page)
     "awards.yml": ('- key: sentinel\n  name: "SENTINEL-award"\n  when: "2099"\n',
                    "SENTINEL-award", "awards", "/cv/"),
     "skills.yml": ('- key: "k"\n  val: "SENTINEL-skill"\n', "SENTINEL-skill", "skills", "/cv/"),
-    "languages.yml": ('- key: "k"\n  val: "SENTINEL-lang"\n', "SENTINEL-lang", "languages", "/cv/"),
 }
 
 

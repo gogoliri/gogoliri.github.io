@@ -36,7 +36,7 @@ page_note: Candidate for the Best Paper Award.
 doi: 10.1109/ISM66958.2025.00038
 
 links:
-  - {label: Contribution m67677, url: "/cv/#std-1"}
+  - {label: Contribution m67677, url: "/#std-1"}
 actions:
   - {label: Read on IEEE Xplore, url: "https://doi.org/10.1109/ISM66958.2025.00038"}
 
@@ -83,4 +83,4 @@ citation:
 ---
 ## Standardization impact
 
-The evaluation methodology from this work was adopted into the MPEG Common Test Conditions used to develop the Video Coding for Machines standard (MPEG contribution [m67677](/cv/#std-1), ISO/IEC JTC 1/SC 29/WG 4, April 2024).
+The evaluation methodology from this work was adopted into the MPEG Common Test Conditions used to develop the Video Coding for Machines standard (MPEG contribution [m67677](/#std-1), ISO/IEC JTC 1/SC 29/WG 4, April 2024).

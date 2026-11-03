@@ -17,9 +17,6 @@ BASELINE = REPO / "tests" / "baseline"
 BASE_COMMIT = "6558488"
 ORIGIN = "https://khoaphamdinh.com"
 
-# Links that pointed inside the old single-page homepage and now cross pages.
-REWRITES = {"/#std-1": "/cv/#std-1", "/#std-2": "/cv/#std-2"}
-
 BLOCK = ("p|li|ul|ol|div|section|h[1-6]|header|footer|main|article|nav|pre|hr|br"
          "|table|thead|tbody|tr|td|th|script")
 _BLOCK_EDGE = re.compile(r"\s*(</?(?:%s)\b[^>]*>)\s*" % BLOCK)
@@ -53,13 +50,13 @@ def soup(path: Path) -> BeautifulSoup:
     return BeautifulSoup(Path(path).read_text(encoding="utf-8"), "html.parser")
 
 
-def _resolve(value: str, page_url: str, rewrites: dict) -> str:
+def _resolve(value: str, page_url: str) -> str:
     absolute = urljoin(ORIGIN + page_url, value)
     if absolute.startswith(ORIGIN + "/") or absolute == ORIGIN:
         parts = urlsplit(absolute)
         absolute = (parts.path or "/") + (f"?{parts.query}" if parts.query else "") \
             + (f"#{parts.fragment}" if parts.fragment else "")
-    return rewrites.get(absolute, absolute)
+    return absolute
 
 
 def _serialize(node, in_pre: bool) -> str:
@@ -77,15 +74,15 @@ def _serialize(node, in_pre: bool) -> str:
     return f"<{node.name}{''.join(attrs)}>{inner}</{node.name}>"
 
 
-def norm(el: Tag, page_url: str, rewrites: dict = REWRITES) -> str:
-    """Canonical form of `el`: comments dropped, links resolved to site paths
-    (then mapped through `rewrites`), attributes and class tokens sorted,
-    whitespace collapsed outside <pre> and trimmed around block tags."""
+def norm(el: Tag, page_url: str) -> str:
+    """Canonical form of `el`: comments dropped, links resolved to site paths,
+    attributes and class tokens sorted, whitespace collapsed outside <pre> and
+    trimmed around block tags."""
     el = copy.copy(el)
     for c in el.find_all(string=lambda s: isinstance(s, Comment)):
         c.extract()
     for tag in [el, *el.find_all(True)]:
         for attr in ("href", "src"):
             if tag.has_attr(attr):
-                tag[attr] = _resolve(tag[attr], page_url, rewrites)
+                tag[attr] = _resolve(tag[attr], page_url)
     return _BLOCK_EDGE.sub(r"\1", _serialize(el, False)).strip()

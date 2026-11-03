@@ -1,5 +1,5 @@
-# CV › Standardization contributions. Newest first.
-# `id` is the link target (/cv/#std-1); keep existing ids stable.
+# Home › Standardization contributions (after Publications). Newest first.
+# `id` is the link target (/#std-1); keep existing ids stable.
 - id: std-2
   label: S2.
   title: Neural Network Super Resolution as Postfilter with Content Adaptation
