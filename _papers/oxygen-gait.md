@@ -28,7 +28,8 @@ affiliations: '<sup>1</sup>Faculty of Information Technology and Communication S
 corresponding: '<sup>&dagger;</sup>Philipp M&uuml;ller and Khoa Pham-Dinh contributed equally to this work.'
 
 venue: '<cite>PLOS ONE</cite> 19(9): e0303317 &mdash; published 27 September 2024.'
-list_venue: '<em>PLOS ONE</em> 19(9):e0303317, 2024. &dagger;&nbsp;equal contribution.'
+list_venue: '<em>PLOS ONE</em>, 2024.'
+list_note: '&dagger;&nbsp;Co-first authors.'
 doi: 10.1371/journal.pone.0303317
 
 actions:

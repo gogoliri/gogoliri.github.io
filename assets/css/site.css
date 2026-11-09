@@ -37,7 +37,7 @@ main:focus{ outline:none; }
 /* ---------- shell ---------- */
 
 .page{
-  max-width:35rem;
+  max-width:38rem;
   margin:0 auto;
   padding:clamp(2rem,6vw,4rem) clamp(1rem,4vw,2rem) 3rem;
 }
@@ -215,9 +215,10 @@ main{ max-width:var(--measure); }
   border-color:var(--accent-deep);
   color:var(--bg);
 }
-/* An award is a label, not a link: same footprint as a chip so the row stays
-   aligned, but tinted and borderless so it never reads as clickable. The tint
-   is green, not grey, so it cannot pass for a disabled button (6.1:1). */
+/* An award is a label, not a link: it sits on its own line under the venue,
+   tinted and borderless so it never reads as clickable. The tint is green,
+   not grey, so it cannot pass for a disabled button (6.1:1). */
+.award{ margin:var(--sp-1) 0 0; line-height:1.5; }
 .badge{
   display:inline-block;
   padding:.2rem .55rem;
@@ -341,7 +342,7 @@ main{ max-width:var(--measure); }
 
 @media (min-width:60em){
   .page{
-    max-width:57rem;
+    max-width:60rem;
     display:grid;
     grid-template-columns:minmax(0,17rem) minmax(0,var(--measure));
     column-gap:clamp(2rem,4vw,4.5rem);

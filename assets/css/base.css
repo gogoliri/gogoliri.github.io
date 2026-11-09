@@ -34,7 +34,7 @@
   --sp-5: clamp(2.5rem, 4vw, 3.4rem);
 
   --gutter:  2.1rem;                   /* shared numbering rail */
-  --measure: 31rem;                    /* ~63–70 characters per line */
+  --measure: 34rem;                    /* ~70–76 characters per line */
   --stick:   clamp(2rem, 5vw, 3.5rem);
 }
 

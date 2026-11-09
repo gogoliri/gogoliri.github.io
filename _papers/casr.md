@@ -36,7 +36,7 @@ affiliations: '<sup>1</sup>Nokia &nbsp;&middot;&nbsp; <sup>2</sup>Aalto Universi
 corresponding: '<sup>*</sup>Corresponding author: <a href="mailto:khoa.phamdinh@aalto.fi">khoa.phamdinh@aalto.fi</a>. Khoa Pham-Dinh was a student at Tampere University during part of the work.'
 
 venue: '<em>IEEE International Workshop on Multimedia Signal Processing (MMSP). Istanbul, Turkey, 22&ndash;24 September 2026.</em>'
-list_venue: '<em>IEEE International Workshop on Multimedia Signal Processing (MMSP)</em>, Istanbul, Turkey, 22&ndash;24 September 2026.'
+list_venue: '<em>IEEE International Workshop on Multimedia Signal Processing (MMSP)</em>, 2026.'
 award: mmsp2026-best-student-paper
 
 links:

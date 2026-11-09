@@ -29,7 +29,7 @@ authors:
 affiliations: '<sup>1</sup>Dept. of Computing Sciences, Tampere University &nbsp;&middot;&nbsp; <sup>2</sup>Nokia Technologies'
 
 venue: '<em>2025 IEEE International Symposium on Multimedia (ISM). Naples, Italy, 8&ndash;10 December 2025, pp. 141&ndash;148.</em>'
-list_venue: '<em>IEEE International Symposium on Multimedia (ISM)</em>, 2025, pp. 141&ndash;148.'
+list_venue: '<em>IEEE International Symposium on Multimedia (ISM)</em>, 2025.'
 # A candidacy is not an award won: it stays a note, not a badge.
 list_note: Candidate for Best Paper Award.
 page_note: Candidate for the Best Paper Award.

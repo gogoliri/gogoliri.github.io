@@ -10,7 +10,16 @@
             {%- endfor -%}
           </p>
           {%- if p.list_venue %}
-          <p class="venue">{{ p.list_venue }}{% if p.list_note %} <span class="note">{{ p.list_note }}</span>{% endif %}</p>
+          <p class="venue">{{ p.list_venue }}</p>
+          {%- endif %}
+          {%- if p.list_note %}
+          <p class="venue note">{{ p.list_note }}</p>
+          {%- endif %}
+          {%- if p.award %}
+          {%- assign award = site.data.awards | where: "key", p.award | first %}
+          {%- if award.badge %}
+          <p class="award"><span class="badge">{{ award.badge }}</span></p>
+          {%- endif %}
           {%- endif %}
           <ul class="links" role="list">
             <li><a class="chip primary" href="{{ p.url }}">Details</a></li>
@@ -20,11 +29,5 @@
             {%- for l in p.links %}
             <li><a class="chip" href="{{ l.url }}">{{ l.label }}</a></li>
             {%- endfor %}
-            {%- if p.award %}
-            {%- assign award = site.data.awards | where: "key", p.award | first %}
-            {%- if award.badge %}
-            <li><span class="badge">{{ award.badge }}</span></li>
-            {%- endif %}
-            {%- endif %}
           </ul>
         </li>
