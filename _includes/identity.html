@@ -3,6 +3,9 @@
     <img class="avatar" src="/avatar.jpg" alt="Portrait of {{ p.name }}"
          width="1194" height="1194" decoding="async">
     <h1>{{ p.name }}</h1>
+    {%- if p.origin %}
+    <p class="origin">{{ p.origin }}</p>
+    {%- endif %}
     <p class="role">{{ p.role }}</p>
     <p class="place">{{ p.place }}</p>
 

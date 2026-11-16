@@ -79,6 +79,21 @@ main{ max-width:var(--measure); }
   color:var(--muted);
 }
 
+.origin{
+  margin:0 0 var(--sp-2);
+  font-size:var(--fs-2);
+  color:var(--muted);
+}
+.origin .clause{ white-space:nowrap; }
+.flag{
+  display:inline-block;
+  height:.72em;
+  width:auto;
+  vertical-align:-.04em;
+  /* hairline so the white of the Finnish flag holds its edge on cream */
+  box-shadow:0 0 0 .5px var(--rule);
+}
+
 .contact{
   list-style:none;
   margin:var(--sp-3) 0 0;

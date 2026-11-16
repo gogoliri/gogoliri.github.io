@@ -2,6 +2,9 @@
 name: Khoa Pham-Dinh
 role: Research Intern, Trustworthy and Adversarial Computing Lab, Aalto University
 place: Helsinki, Finland
+# Rail line under the name. Flags are images, not emoji: Windows shows flag emoji as bare letters.
+# Each clause stays on one line, so a narrow rail breaks after the comma.
+origin: '<span class="clause">Born in Vietnam <img class="flag" src="/assets/img/flag-vn.svg" alt="" width="30" height="20">,</span> <span class="clause">trained in Finland <img class="flag" src="/assets/img/flag-fi.svg" alt="" width="18" height="11"></span>'
 email: khoa.a.phamdinh@gmail.com
 description: "Khoa Pham-Dinh — research intern at the Trustworthy and Adversarial Computing Lab, Aalto University. Learned image and video coding for machines, neural post-filters for VVC, adversarial machine learning."
 og_description: "Research intern at the Trustworthy and Adversarial Computing Lab, Aalto University. Learned image and video coding for machines, neural post-filters for VVC, adversarial machine learning."
